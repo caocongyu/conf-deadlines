@@ -97,72 +97,430 @@
 window.CONF_DATA = {
   "last_updated": "2026-09-15",
   "groups": [
-    { "id": "se", "title": "软件工程四大顶会", "subtitle": "Software Engineering", "conferences": [
-      { "key": "icse", "name": "ICSE", "full": "IEEE/ACM International Conference on Software Engineering", "rank": "CCF-A", "frequency": "每年1次截稿",
-        "editions": [{ "edition": "ICSE 2027", "conf_dates_text": "Apr 25 – May 1, 2027 (core Apr 28-30)", "conf_start": "2027-04-25", "conf_end": "2027-05-01", "location": "Dublin, Ireland", "website": "https://conf.researchr.org/home/icse-2027",
-          "cycles": [
-            { "track": "Research", "abstract": "2026-06-23", "submission": "2026-06-30", "time": "23:59", "tz": "AoE", "notification": "2026-10-20", "status": "closed" },
-            { "track": "SEET (Education)", "submission": "2026-10-23", "time": "23:59", "tz": "AoE", "status": "open" }
-          ] }],
-        "history": [ { "year": 2025, "submissions": 650, "accepted": 130 }, { "year": 2024, "submissions": 615, "accepted": 124 }, { "year": 2023, "submissions": 580, "accepted": 120 } ] },
-      { "key": "fse", "name": "FSE", "full": "ACM International Conference on the Foundations of Software Engineering", "rank": "CCF-A", "frequency": "每年1次截稿",
-        "editions": [{ "edition": "FSE 2027", "conf_dates_text": "Jul 12 – 16, 2027", "conf_start": "2027-07-12", "conf_end": "2027-07-16", "location": "Shenzhen, China", "website": "https://conf.researchr.org/home/fse-2027",
-          "cycles": [
-            { "track": "Research", "submission": "2026-10-02", "time": "23:59", "tz": "AoE", "notification": "2027-01-22", "status": "open" },
-            { "track": "Workshop Proposals", "submission": "2026-10-15", "time": "23:59", "tz": "AoE", "status": "open" }
-          ] }],
-        "history": [ { "year": 2025, "submissions": 420, "accepted": 86 }, { "year": 2024, "submissions": 400, "accepted": 80 }, { "year": 2023, "submissions": 380, "accepted": 78 } ] },
-      { "key": "ase", "name": "ASE", "full": "IEEE/ACM International Conference on Automated Software Engineering", "rank": "CCF-A", "frequency": "每年1次截稿",
-        "editions": [
-          { "edition": "ASE 2026", "conf_dates_text": "Oct 12 – 16, 2026", "conf_start": "2026-10-12", "conf_end": "2026-10-16", "location": "Munich, Germany", "website": "https://conf.researchr.org/home/ase-2026",
-            "cycles": [ { "track": "Research", "submission": "2026-03-26", "time": "23:59", "tz": "AoE", "notification": "2026-06-18", "status": "closed" } ] },
-          { "edition": "ASE 2027", "conf_dates_text": "TBA", "conf_start": null, "conf_end": null, "location": "TBA", "website": "https://conf.researchr.org/home/ase-2027",
-            "cycles": [ { "track": "Research", "submission": null, "tz": "", "status": "tba" } ] }
-        ],
-        "history": [ { "year": 2025, "submissions": 450, "accepted": 90 }, { "year": 2024, "submissions": 430, "accepted": 86 }, { "year": 2023, "submissions": 410, "accepted": 82 } ] },
-      { "key": "issta", "name": "ISSTA", "full": "ACM SIGSOFT International Symposium on Software Testing and Analysis", "rank": "CCF-A", "frequency": "每年1次截稿",
-        "editions": [{ "edition": "ISSTA 2027", "conf_dates_text": "Sep 7 – 10, 2027", "conf_start": "2027-09-07", "conf_end": "2027-09-10", "location": "Singapore", "website": "https://conf.researchr.org/home/issta-2027",
-          "cycles": [ { "track": "Research", "abstract": "2027-01-08", "submission": "2027-01-11", "time": "23:59", "tz": "AoE", "notification": "2027-06-17", "status": "open" } ] }],
-        "history": [ { "year": 2025, "submissions": 220, "accepted": 44 }, { "year": 2024, "submissions": 200, "accepted": 40 }, { "year": 2023, "submissions": 190, "accepted": 38 } ] }
-    ] },
-    { "id": "sec", "title": "安全四大顶会", "subtitle": "Security", "conferences": [
-      { "key": "sp", "name": "IEEE S&P", "full": "IEEE Symposium on Security and Privacy (Oakland)", "rank": "CCF-A", "frequency": "每年2次截稿",
-        "editions": [{ "edition": "S&P 2027", "conf_dates_text": "May 17 – 20, 2027", "conf_start": "2027-05-17", "conf_end": "2027-05-20", "location": "Montreal, Canada", "website": "https://www.ieee-security.org/TC/SP2027/",
-          "cycles": [
-            { "track": "Cycle 1", "abstract": "2026-06-04", "submission": "2026-06-11", "time": "23:59", "tz": "AoE", "notification": "2026-09-11", "status": "closed" },
-            { "track": "Cycle 2", "abstract": "2026-11-10", "submission": "2026-11-17", "time": "23:59", "tz": "AoE", "notification": "2027-03-05", "status": "open" }
-          ] }],
-        "history": [ { "year": 2025, "submissions": 545, "accepted": 108 }, { "year": 2024, "submissions": 461, "accepted": 107 }, { "year": 2023, "submissions": 495, "accepted": 109 } ] },
-      { "key": "ccs", "name": "CCS", "full": "ACM SIGSAC Conference on Computer and Communications Security", "rank": "CCF-A", "frequency": "每年2次截稿",
-        "editions": [
-          { "edition": "CCS 2026", "conf_dates_text": "Nov 15 – 19, 2026", "conf_start": "2026-11-15", "conf_end": "2026-11-19", "location": "The Hague, Netherlands", "website": "https://www.sigsac.org/ccs/CCS2026/",
-            "cycles": [
-              { "track": "Cycle 1", "abstract": "2026-01-07", "submission": "2026-01-14", "time": "23:59", "tz": "AoE", "notification": "2026-04-09", "status": "closed" },
-              { "track": "Cycle 2", "abstract": "2026-04-22", "submission": "2026-04-29", "time": "23:59", "tz": "AoE", "notification": "2026-07-17", "status": "closed" }
-            ] },
-          { "edition": "CCS 2027", "conf_dates_text": "Oct 2027 (TBA)", "conf_start": null, "conf_end": null, "location": "Atlanta, USA", "website": "https://www.sigsac.org/ccs/CCS2027/",
-            "cycles": [ { "track": "Research", "submission": null, "tz": "", "status": "tba" } ] }
-        ],
-        "history": [ { "year": 2025, "submissions": 720, "accepted": 122 }, { "year": 2024, "submissions": 690, "accepted": 117 }, { "year": 2023, "submissions": 660, "accepted": 112 } ] },
-      { "key": "usenixsec", "name": "USENIX Sec", "full": "USENIX Security Symposium", "rank": "CCF-A", "frequency": "每年2次截稿",
-        "editions": [{ "edition": "USENIX Security 2027", "conf_dates_text": "Aug 11 – 13, 2027", "conf_start": "2027-08-11", "conf_end": "2027-08-13", "location": "Denver, CO, USA", "website": "https://www.usenix.org/conference/usenixsecurity27",
-          "cycles": [
-            { "track": "Cycle 1", "abstract": "2026-08-18", "submission": "2026-08-25", "time": "23:59", "tz": "AoE", "notification": "2026-12-03", "status": "closed" },
-            { "track": "Cycle 2", "abstract": "2027-01-19", "submission": "2027-01-26", "time": "23:59", "tz": "AoE", "notification": "2027-05-06", "status": "open" }
-          ] }],
-        "history": [ { "year": 2025, "submissions": 1500, "accepted": 410 }, { "year": 2024, "submissions": 1489, "accepted": 417 }, { "year": 2023, "submissions": 1420, "accepted": 409 } ] },
-      { "key": "ndss", "name": "NDSS", "full": "Network and Distributed System Security Symposium", "rank": "CCF-A", "frequency": "每年2次截稿",
-        "editions": [
-          { "edition": "NDSS 2027", "conf_dates_text": "Mar 22 – 26, 2027", "conf_start": "2027-03-22", "conf_end": "2027-03-26", "location": "Seoul, Republic of Korea", "website": "https://www.ndss-symposium.org/ndss2027/",
-            "cycles": [
-              { "track": "Summer", "submission": "2026-05-06", "time": "23:59", "tz": "AoE", "notification": "2026-07-29", "status": "closed" },
-              { "track": "Fall", "submission": "2026-08-19", "time": "23:59", "tz": "AoE", "notification": "2026-11-04", "status": "closed" }
-            ] },
-          { "edition": "NDSS 2028", "conf_dates_text": "TBA", "conf_start": null, "conf_end": null, "location": "TBA", "website": "https://www.ndss-symposium.org/",
-            "cycles": [ { "track": "Research", "submission": null, "tz": "", "status": "tba" } ] }
-        ],
-        "history": [ { "year": 2025, "submissions": 610, "accepted": 105 }, { "year": 2024, "submissions": 590, "accepted": 101 }, { "year": 2023, "submissions": 560, "accepted": 96 } ] }
-    ] }
+    {
+      "id": "se",
+      "title": "软件工程四大顶会",
+      "subtitle": "Software Engineering",
+      "conferences": [
+        {
+          "key": "icse",
+          "name": "ICSE",
+          "full": "IEEE/ACM International Conference on Software Engineering",
+          "rank": "CCF-A",
+          "frequency": "每年1次截稿",
+          "editions": [
+            {
+              "edition": "ICSE 2027",
+              "conf_dates_text": "Apr 25 – May 1, 2027 (core Apr 28-30)",
+              "conf_start": "2027-04-25",
+              "conf_end": "2027-05-01",
+              "location": "Dublin, Ireland",
+              "website": "https://conf.researchr.org/home/icse-2027",
+              "cycles": [
+                {
+                  "track": "Research",
+                  "abstract": "2026-06-23",
+                  "submission": "2026-06-30",
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "notification": "2026-10-20",
+                  "status": "closed"
+                },
+                {
+                  "track": "SEET (Education)",
+                  "submission": "2026-10-23",
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "status": "open"
+                }
+              ]
+            }
+          ],
+          "history": [
+            {
+              "year": 2026,
+              "accepted": 321
+            },
+            {
+              "year": 2025,
+              "accepted": 245
+            },
+            {
+              "year": 2024,
+              "accepted": 234
+            }
+          ]
+        },
+        {
+          "key": "fse",
+          "name": "FSE",
+          "full": "ACM International Conference on the Foundations of Software Engineering",
+          "rank": "CCF-A",
+          "frequency": "每年1次截稿",
+          "editions": [
+            {
+              "edition": "FSE 2027",
+              "conf_dates_text": "Jul 12 – 16, 2027",
+              "conf_start": "2027-07-12",
+              "conf_end": "2027-07-16",
+              "location": "Shenzhen, China",
+              "website": "https://conf.researchr.org/home/fse-2027",
+              "cycles": [
+                {
+                  "track": "Research",
+                  "submission": "2026-10-02",
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "notification": "2027-01-22",
+                  "status": "open"
+                },
+                {
+                  "track": "Workshop Proposals",
+                  "submission": "2026-10-15",
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "status": "open"
+                }
+              ]
+            }
+          ],
+          "history": [
+            {
+              "year": 2025,
+              "accepted": 135
+            },
+            {
+              "year": 2024,
+              "accepted": 121
+            }
+          ]
+        },
+        {
+          "key": "ase",
+          "name": "ASE",
+          "full": "IEEE/ACM International Conference on Automated Software Engineering",
+          "rank": "CCF-A",
+          "frequency": "每年1次截稿",
+          "editions": [
+            {
+              "edition": "ASE 2026",
+              "conf_dates_text": "Oct 12 – 16, 2026",
+              "conf_start": "2026-10-12",
+              "conf_end": "2026-10-16",
+              "location": "Munich, Germany",
+              "website": "https://conf.researchr.org/home/ase-2026",
+              "cycles": [
+                {
+                  "track": "Research",
+                  "submission": "2026-03-26",
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "notification": "2026-06-18",
+                  "status": "closed"
+                }
+              ]
+            },
+            {
+              "edition": "ASE 2027",
+              "conf_dates_text": "TBA",
+              "conf_start": null,
+              "conf_end": null,
+              "location": "TBA",
+              "website": "https://conf.researchr.org/home/ase-2027",
+              "cycles": [
+                {
+                  "track": "Research",
+                  "submission": null,
+                  "tz": "",
+                  "status": "tba"
+                }
+              ]
+            }
+          ],
+          "history": [
+            {
+              "year": 2025,
+              "accepted": 245
+            },
+            {
+              "year": 2024,
+              "accepted": 155
+            }
+          ]
+        },
+        {
+          "key": "issta",
+          "name": "ISSTA",
+          "full": "ACM SIGSOFT International Symposium on Software Testing and Analysis",
+          "rank": "CCF-A",
+          "frequency": "每年1次截稿",
+          "editions": [
+            {
+              "edition": "ISSTA 2027",
+              "conf_dates_text": "Sep 7 – 10, 2027",
+              "conf_start": "2027-09-07",
+              "conf_end": "2027-09-10",
+              "location": "Singapore",
+              "website": "https://conf.researchr.org/home/issta-2027",
+              "cycles": [
+                {
+                  "track": "Research",
+                  "abstract": "2027-01-08",
+                  "submission": "2027-01-11",
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "notification": "2027-06-17",
+                  "status": "open"
+                }
+              ]
+            }
+          ],
+          "history": [
+            {
+              "year": 2025,
+              "accepted": 107
+            },
+            {
+              "year": 2024,
+              "accepted": 143
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec",
+      "title": "安全四大顶会",
+      "subtitle": "Security",
+      "conferences": [
+        {
+          "key": "sp",
+          "name": "IEEE S&P",
+          "full": "IEEE Symposium on Security and Privacy (Oakland)",
+          "rank": "CCF-A",
+          "frequency": "每年2次截稿",
+          "editions": [
+            {
+              "edition": "S&P 2027",
+              "conf_dates_text": "May 17 – 20, 2027",
+              "conf_start": "2027-05-17",
+              "conf_end": "2027-05-20",
+              "location": "Montreal, Canada",
+              "website": "https://www.ieee-security.org/TC/SP2027/",
+              "cycles": [
+                {
+                  "track": "Cycle 1",
+                  "abstract": "2026-06-04",
+                  "submission": "2026-06-11",
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "notification": "2026-09-11",
+                  "status": "closed"
+                },
+                {
+                  "track": "Cycle 2",
+                  "abstract": "2026-11-10",
+                  "submission": "2026-11-17",
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "notification": "2027-03-05",
+                  "status": "open"
+                }
+              ]
+            }
+          ],
+          "history": [
+            {
+              "year": 2026,
+              "accepted": 254
+            },
+            {
+              "year": 2025,
+              "accepted": 255
+            },
+            {
+              "year": 2024,
+              "accepted": 261
+            }
+          ]
+        },
+        {
+          "key": "ccs",
+          "name": "CCS",
+          "full": "ACM SIGSAC Conference on Computer and Communications Security",
+          "rank": "CCF-A",
+          "frequency": "每年2次截稿",
+          "editions": [
+            {
+              "edition": "CCS 2026",
+              "conf_dates_text": "Nov 15 – 19, 2026",
+              "conf_start": "2026-11-15",
+              "conf_end": "2026-11-19",
+              "location": "The Hague, Netherlands",
+              "website": "https://www.sigsac.org/ccs/CCS2026/",
+              "cycles": [
+                {
+                  "track": "Cycle 1",
+                  "abstract": "2026-01-07",
+                  "submission": "2026-01-14",
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "notification": "2026-04-09",
+                  "status": "closed"
+                },
+                {
+                  "track": "Cycle 2",
+                  "abstract": "2026-04-22",
+                  "submission": "2026-04-29",
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "notification": "2026-07-17",
+                  "status": "closed"
+                }
+              ]
+            },
+            {
+              "edition": "CCS 2027",
+              "conf_dates_text": "Oct 2027 (TBA)",
+              "conf_start": null,
+              "conf_end": null,
+              "location": "Atlanta, USA",
+              "website": "https://www.sigsac.org/ccs/CCS2027/",
+              "cycles": [
+                {
+                  "track": "Research",
+                  "submission": null,
+                  "tz": "",
+                  "status": "tba"
+                }
+              ]
+            }
+          ],
+          "history": [
+            {
+              "year": 2025,
+              "accepted": 395
+            },
+            {
+              "year": 2024,
+              "accepted": 328
+            }
+          ]
+        },
+        {
+          "key": "usenixsec",
+          "name": "USENIX Sec",
+          "full": "USENIX Security Symposium",
+          "rank": "CCF-A",
+          "frequency": "每年2次截稿",
+          "editions": [
+            {
+              "edition": "USENIX Security 2027",
+              "conf_dates_text": "Aug 11 – 13, 2027",
+              "conf_start": "2027-08-11",
+              "conf_end": "2027-08-13",
+              "location": "Denver, CO, USA",
+              "website": "https://www.usenix.org/conference/usenixsecurity27",
+              "cycles": [
+                {
+                  "track": "Cycle 1",
+                  "abstract": "2026-08-18",
+                  "submission": "2026-08-25",
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "notification": "2026-12-03",
+                  "status": "closed"
+                },
+                {
+                  "track": "Cycle 2",
+                  "abstract": "2027-01-19",
+                  "submission": "2027-01-26",
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "notification": "2027-05-06",
+                  "status": "open"
+                }
+              ]
+            }
+          ],
+          "history": [
+            {
+              "year": 2025,
+              "accepted": 455
+            },
+            {
+              "year": 2024,
+              "accepted": 417
+            }
+          ]
+        },
+        {
+          "key": "ndss",
+          "name": "NDSS",
+          "full": "Network and Distributed System Security Symposium",
+          "rank": "CCF-A",
+          "frequency": "每年2次截稿",
+          "editions": [
+            {
+              "edition": "NDSS 2027",
+              "conf_dates_text": "Mar 22 – 26, 2027",
+              "conf_start": "2027-03-22",
+              "conf_end": "2027-03-26",
+              "location": "Seoul, Republic of Korea",
+              "website": "https://www.ndss-symposium.org/ndss2027/",
+              "cycles": [
+                {
+                  "track": "Summer",
+                  "submission": "2026-05-06",
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "notification": "2026-07-29",
+                  "status": "closed"
+                },
+                {
+                  "track": "Fall",
+                  "submission": "2026-08-19",
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "notification": "2026-11-04",
+                  "status": "closed"
+                }
+              ]
+            },
+            {
+              "edition": "NDSS 2028",
+              "conf_dates_text": "TBA",
+              "conf_start": null,
+              "conf_end": null,
+              "location": "TBA",
+              "website": "https://www.ndss-symposium.org/",
+              "cycles": [
+                {
+                  "track": "Research",
+                  "submission": null,
+                  "tz": "",
+                  "status": "tba"
+                }
+              ]
+            }
+          ],
+          "history": [
+            {
+              "year": 2026,
+              "accepted": 265
+            },
+            {
+              "year": 2025,
+              "accepted": 211
+            },
+            {
+              "year": 2024,
+              "accepted": 140
+            }
+          ]
+        }
+      ]
+    }
   ]
 };
 </script>
@@ -217,16 +575,16 @@ function buildCard(conf,gc){
   (ed.cycles||[]).forEach(cy=>{
     var badge=cy.status==="open"?"open":cy.status==="closed"?"closed":"tba";
     var dtxt=cy.submission?("截稿 "+fmtLocal(deadlineInstant(cy))):"截稿 TBA";
-    if(cy.tz&&cy.submission) dtxt+=" ("+esc(cy.tz)+(cy.time?" "+esc(cy.time):"")+")";
+    
     if(cy.abstract) dtxt="摘要 "+fmtLocal(deadlineInstant({...cy,submission:cy.abstract}))+" · "+dtxt;
     if(cy.notification) dtxt+=" · 通知 "+fmtDate(cy.notification);
     h+='<div class="cycle"><span class="t">'+esc(cy.track)+'</span><span class="d">'+dtxt+'</span><span class="badge '+badge+'">'+(cy.status==="open"?"可投":cy.status==="closed"?"已截止":"待公布")+'</span></div>';
   });
   h+='</div>';
   if(conf.history&&conf.history.length){
-    h+='<details class="history"><summary>历年投稿/录用统计</summary><table><tr><th>年份</th><th>投稿</th><th>录用</th><th>录用率</th></tr>';
-    conf.history.forEach(r=>{var rate=(r.accepted&&r.submissions)?(r.accepted/r.submissions*100).toFixed(1)+"%":"—";h+='<tr><td>'+r.year+'</td><td>'+(r.submissions||"—")+'</td><td>'+(r.accepted||"—")+'</td><td class="rate">'+rate+'</td></tr>'});
-    h+='</table><div class="note">数字为近似参考值，请以官网为准。</div></details>';
+    h+='<details class="history"><summary>历年录用统计</summary><table><tr><th>年份</th><th>录用论文数</th></tr>';
+    conf.history.forEach(r=>{h+='<tr><td>'+r.year+'</td><td>'+(r.accepted!=null?r.accepted:"—")+'</td></tr>'});
+    h+='</table><div class="note">录用数来源：各会议官网 Accepted Papers 页面（主会/Research Track，不含 workshop/poster）。数据截至 2026-06-24。<br>投稿数多数会议不公布，故不列。</div></details>';
   }
   h+='</div>';
   return {html:h, target:target, label:label, mode:mode, kind:kind};
