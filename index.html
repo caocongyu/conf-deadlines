@@ -129,8 +129,8 @@ window.CONF_DATA = {
       { "key": "sp", "name": "IEEE S&P", "full": "IEEE Symposium on Security and Privacy (Oakland)", "rank": "CCF-A", "frequency": "每年2次截稿",
         "editions": [{ "edition": "S&P 2027", "conf_dates_text": "May 17 – 20, 2027", "conf_start": "2027-05-17", "conf_end": "2027-05-20", "location": "Montreal, Canada", "website": "https://www.ieee-security.org/TC/SP2027/",
           "cycles": [
-            { "track": "Cycle 1", "abstract": "2026-06-04", "submission": "2026-06-11", "time": "07:59", "tz": "EDT", "notification": "2026-09-11", "status": "closed" },
-            { "track": "Cycle 2", "abstract": "2026-11-10", "submission": "2026-11-17", "time": "07:59", "tz": "EDT", "notification": "2027-03-05", "status": "open" }
+            { "track": "Cycle 1", "abstract": "2026-06-04", "submission": "2026-06-11", "time": "23:59", "tz": "AoE", "notification": "2026-09-11", "status": "closed" },
+            { "track": "Cycle 2", "abstract": "2026-11-10", "submission": "2026-11-17", "time": "23:59", "tz": "AoE", "notification": "2027-03-05", "status": "open" }
           ] }],
         "history": [ { "year": 2025, "submissions": 545, "accepted": 108 }, { "year": 2024, "submissions": 461, "accepted": 107 }, { "year": 2023, "submissions": 495, "accepted": 109 } ] },
       { "key": "ccs", "name": "CCS", "full": "ACM SIGSAC Conference on Computer and Communications Security", "rank": "CCF-A", "frequency": "每年2次截稿",
@@ -183,9 +183,9 @@ function confInstant(ed, key){
 }
 function fmtLocal(dt){
   if(!dt) return "TBA";
-  return dt.toLocaleString("zh-CN",{year:"numeric",month:"short",day:"numeric",hour:"2-digit",minute:"2-digit",hour12:false});
+  return dt.toLocaleString("zh-CN",{timeZone:"Asia/Shanghai",year:"numeric",month:"short",day:"numeric",hour:"2-digit",minute:"2-digit",hour12:false});
 }
-function fmtDate(s){if(!s)return"TBA";var d=new Date(s+(s.length<=10?"T00:00:00":""));if(isNaN(d))return s;return d.toLocaleDateString("zh-CN",{year:"numeric",month:"short",day:"numeric"})}
+function fmtDate(s){if(!s)return"TBA";var d=new Date(s+(s.length<=10?"T00:00:00":""));if(isNaN(d))return s;return d.toLocaleDateString("zh-CN",{timeZone:"Asia/Shanghai",year:"numeric",month:"short",day:"numeric"})}
 function pickEdition(c){var e=c.editions||[];return e.find(x=>(x.cycles||[]).some(k=>k.status==="open"))||e[0]}
 function pickPrimary(ed){
   var cs=ed.cycles||[];
@@ -252,7 +252,7 @@ function sortKey(b){
   return 1e9;
 }
 function tick(){
-  document.getElementById("now").textContent=new Date().toLocaleString("zh-CN");
+  document.getElementById("now").textContent=new Date().toLocaleString("zh-CN",{timeZone:"Asia/Shanghai"});
   Object.keys(CARDS).forEach(key=>{
     var info=CARDS[key],el=document.getElementById("cd_"+key);
     if(!el)return;
