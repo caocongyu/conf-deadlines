@@ -80,7 +80,7 @@ def update_from_researchr(conf_key, url, data):
         cyc = next((c for c in ed["cycles"]
                    if c["track"].lower() in track.lower() or track.lower() in c["track"].lower()), None)
         if not cyc:
-            cyc = {"track": track, "tz": "AoE"}
+            cyc = {"track": track, "tz": "AoE", "time": "23:59"}
             ed["cycles"].append(cyc)
         if abst:
             cyc["abstract"] = abst

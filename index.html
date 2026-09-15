@@ -23,7 +23,7 @@
   .group.se .bar{background:var(--se)}
   .group.sec .bar{background:var(--sec)}
   .group>h2 .tag{font-size:12px;color:var(--muted);font-weight:500}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(390px,1fr));gap:16px}
   .card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:14px;padding:18px 18px 16px;position:relative;overflow:hidden;transition:transform .15s,border-color .15s}
   .card:hover{transform:translateY(-2px);border-color:#3a4a72}
   .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px}
@@ -33,18 +33,20 @@
   .name{font-size:22px;font-weight:800;letter-spacing:.5px}
   .full{font-size:11.5px;color:var(--muted);margin-top:2px}
   .rank{font-size:10.5px;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.06);color:var(--text);white-space:nowrap;border:1px solid var(--border)}
-  .countdown{margin:14px 0 10px;padding:14px 16px;border-radius:10px;background:rgba(0,0,0,.25);border:1px solid var(--border);text-align:center}
+  .freq{font-size:11px;color:var(--muted);margin-top:6px}
+  .freq b{color:var(--text)}
+  .countdown{margin:12px 0 10px;padding:14px 16px;border-radius:10px;background:rgba(0,0,0,.25);border:1px solid var(--border);text-align:center}
   .countdown .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
-  .countdown .big{font-size:34px;font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums}
-  .countdown .unit{font-size:14px;font-weight:600;color:var(--muted);margin-left:4px}
-  .countdown .sub{font-size:12px;color:var(--muted);margin-top:4px}
+  .countdown .big{font-size:30px;font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums}
+  .countdown .big .u{font-size:14px;font-weight:600;color:var(--muted);margin:0 4px}
+  .countdown .sub{font-size:12px;color:var(--muted);margin-top:6px}
   .countdown .sub b{color:var(--text)}
   .u7 .big{color:var(--red);animation:pulse 1.2s infinite}
   .u30 .big{color:var(--orange)}
   .u90 .big{color:var(--yellow)}
   .ufar .big{color:var(--green)}
   .uclosed .big{color:var(--gray)}
-  .utba .big{color:var(--gray);font-size:22px}
+  .utba .big{color:var(--gray);font-size:20px}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
   .info{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:13px;margin-top:8px}
   .info .k{color:var(--muted);white-space:nowrap}
@@ -61,7 +63,10 @@
   .badge.closed{background:rgba(107,114,128,.15);color:var(--gray)}
   .badge.tba{background:rgba(241,196,15,.15);color:var(--yellow)}
   .history{margin-top:12px}
-  .history summary{cursor:pointer;font-size:12px;color:var(--muted);user-select:none;padding:4px 0}
+  .history summary{cursor:pointer;font-size:12px;color:var(--muted);user-select:none;padding:4px 0;list-style:none}
+  .history summary::-webkit-details-marker{display:none}
+  .history summary::before{content:"▶ ";font-size:9px;color:var(--muted)}
+  .history[open] summary::before{content:"▼ "}
   .history summary:hover{color:var(--text)}
   .history table{width:100%;border-collapse:collapse;margin-top:8px;font-size:12px}
   .history th,.history td{padding:5px 8px;text-align:right;border-bottom:1px solid var(--border)}
@@ -69,8 +74,6 @@
   .history th:first-child,.history td:first-child{text-align:left}
   .history td.rate{color:var(--green);font-weight:600}
   .history .note{font-size:10px;color:var(--muted);margin-top:4px}
-  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px}
-  .hint{text-align:center;color:var(--muted);font-size:12px;padding:8px 12px;background:rgba(255,255,255,.03);border-radius:8px;border:1px dashed var(--border);max-width:640px;margin:14px auto 0}
   code{background:rgba(255,255,255,.08);padding:1px 5px;border-radius:4px;font-size:90%}
 </style>
 </head>
@@ -89,544 +92,187 @@
     </div>
   </header>
   <div id="root"></div>
-  <div class="hint">想刷新数据？终端运行 <code>python3 update.py</code>（需联网），自动抓取最新截稿并更新 <code>data.js</code>。历史投稿/录用数字为近似参考，请以官网为准。</div>
-  <footer>单文件本地页面 · 双击 <code>index.html</code> 即可打开 · 可直接把整个文件夹分享给别人</footer>
 </div>
 <script id="data">
 window.CONF_DATA = {
-  "last_updated": "2026-09-14",
+  "last_updated": "2026-09-15",
   "groups": [
-    {
-      "id": "se",
-      "title": "软件工程四大顶会",
-      "subtitle": "Software Engineering",
-      "conferences": [
-        {
-          "key": "icse",
-          "name": "ICSE",
-          "full": "IEEE/ACM International Conference on Software Engineering",
-          "rank": "CCF-A",
-          "editions": [
-            {
-              "edition": "ICSE 2027",
-              "conf_dates_text": "Apr 25 – May 1, 2027 (core Apr 28-30)",
-              "conf_start": "2027-04-25",
-              "conf_end": "2027-05-01",
-              "location": "Dublin, Ireland",
-              "website": "https://conf.researchr.org/home/icse-2027",
-              "cycles": [
-                {
-                  "track": "Research",
-                  "abstract": "2026-06-23",
-                  "submission": "2026-06-30",
-                  "notification": "2026-10-20",
-                  "tz": "AoE",
-                  "status": "closed"
-                },
-                {
-                  "track": "SEET (Education)",
-                  "submission": "2026-10-23",
-                  "tz": "AoE",
-                  "status": "open"
-                }
-              ]
-            }
-          ],
-          "history": [
-            {
-              "year": 2025,
-              "submissions": 650,
-              "accepted": 130,
-              "note": "约"
-            },
-            {
-              "year": 2024,
-              "submissions": 615,
-              "accepted": 124,
-              "note": "约"
-            },
-            {
-              "year": 2023,
-              "submissions": 580,
-              "accepted": 120,
-              "note": "约"
-            }
-          ]
-        },
-        {
-          "key": "fse",
-          "name": "FSE",
-          "full": "ACM International Conference on the Foundations of Software Engineering",
-          "rank": "CCF-A",
-          "editions": [
-            {
-              "edition": "FSE 2027",
-              "conf_dates_text": "Jul 12 – 16, 2027",
-              "conf_start": "2027-07-12",
-              "conf_end": "2027-07-16",
-              "location": "Shenzhen, China",
-              "website": "https://conf.researchr.org/home/fse-2027",
-              "cycles": [
-                {
-                  "track": "Research",
-                  "submission": "2026-10-02",
-                  "notification": "2027-01-22",
-                  "tz": "AoE",
-                  "status": "open"
-                },
-                {
-                  "track": "Workshop Proposals",
-                  "submission": "2026-10-15",
-                  "tz": "AoE",
-                  "status": "open"
-                }
-              ]
-            }
-          ],
-          "history": [
-            {
-              "year": 2025,
-              "submissions": 420,
-              "accepted": 86,
-              "note": "约"
-            },
-            {
-              "year": 2024,
-              "submissions": 400,
-              "accepted": 80,
-              "note": "约"
-            },
-            {
-              "year": 2023,
-              "submissions": 380,
-              "accepted": 78,
-              "note": "约"
-            }
-          ]
-        },
-        {
-          "key": "ase",
-          "name": "ASE",
-          "full": "IEEE/ACM International Conference on Automated Software Engineering",
-          "rank": "CCF-A",
-          "editions": [
-            {
-              "edition": "ASE 2026",
-              "conf_dates_text": "Oct 12 – 16, 2026",
-              "conf_start": "2026-10-12",
-              "conf_end": "2026-10-16",
-              "location": "Munich, Germany",
-              "website": "https://conf.researchr.org/home/ase-2026",
-              "cycles": [
-                {
-                  "track": "Research",
-                  "submission": "2026-03-26",
-                  "notification": "2026-06-18",
-                  "tz": "AoE",
-                  "status": "closed"
-                }
-              ]
-            },
-            {
-              "edition": "ASE 2027",
-              "conf_dates_text": "TBA",
-              "conf_start": null,
-              "conf_end": null,
-              "location": "TBA",
-              "website": "https://conf.researchr.org/home/ase-2027",
-              "cycles": [
-                {
-                  "track": "Research",
-                  "submission": null,
-                  "tz": "",
-                  "status": "tba"
-                }
-              ]
-            }
-          ],
-          "history": [
-            {
-              "year": 2025,
-              "submissions": 450,
-              "accepted": 90,
-              "note": "约"
-            },
-            {
-              "year": 2024,
-              "submissions": 430,
-              "accepted": 86,
-              "note": "约"
-            },
-            {
-              "year": 2023,
-              "submissions": 410,
-              "accepted": 82,
-              "note": "约"
-            }
-          ]
-        },
-        {
-          "key": "issta",
-          "name": "ISSTA",
-          "full": "ACM SIGSOFT International Symposium on Software Testing and Analysis",
-          "rank": "CCF-A",
-          "editions": [
-            {
-              "edition": "ISSTA 2027",
-              "conf_dates_text": "Sep 7 – 10, 2027",
-              "conf_start": "2027-09-07",
-              "conf_end": "2027-09-10",
-              "location": "Singapore",
-              "website": "https://conf.researchr.org/home/issta-2027",
-              "cycles": [
-                {
-                  "track": "Research",
-                  "abstract": "2027-01-08",
-                  "submission": "2027-01-11",
-                  "notification": "2027-06-17",
-                  "tz": "AoE",
-                  "status": "open"
-                }
-              ]
-            }
-          ],
-          "history": [
-            {
-              "year": 2025,
-              "submissions": 220,
-              "accepted": 44,
-              "note": "约"
-            },
-            {
-              "year": 2024,
-              "submissions": 200,
-              "accepted": 40,
-              "note": "约"
-            },
-            {
-              "year": 2023,
-              "submissions": 190,
-              "accepted": 38,
-              "note": "约"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "sec",
-      "title": "安全四大顶会",
-      "subtitle": "Security",
-      "conferences": [
-        {
-          "key": "sp",
-          "name": "IEEE S&P",
-          "full": "IEEE Symposium on Security and Privacy (Oakland)",
-          "rank": "CCF-A",
-          "editions": [
-            {
-              "edition": "S&P 2027",
-              "conf_dates_text": "May 17 – 20, 2027",
-              "conf_start": "2027-05-17",
-              "conf_end": "2027-05-20",
-              "location": "Montreal, Canada",
-              "website": "https://www.ieee-security.org/TC/SP2027/",
-              "cycles": [
-                {
-                  "track": "Cycle 1",
-                  "abstract": "2026-06-04",
-                  "submission": "2026-06-11",
-                  "notification": "2026-09-11",
-                  "tz": "EDT fixed",
-                  "status": "closed"
-                },
-                {
-                  "track": "Cycle 2",
-                  "abstract": "2026-11-10",
-                  "submission": "2026-11-17",
-                  "notification": "2027-03-05",
-                  "tz": "fixed clock",
-                  "status": "open"
-                }
-              ]
-            }
-          ],
-          "history": [
-            {
-              "year": 2025,
-              "submissions": 545,
-              "accepted": 108,
-              "note": "约"
-            },
-            {
-              "year": 2024,
-              "submissions": 461,
-              "accepted": 107,
-              "note": "约"
-            },
-            {
-              "year": 2023,
-              "submissions": 495,
-              "accepted": 109,
-              "note": "约"
-            }
-          ]
-        },
-        {
-          "key": "ccs",
-          "name": "CCS",
-          "full": "ACM SIGSAC Conference on Computer and Communications Security",
-          "rank": "CCF-A",
-          "editions": [
-            {
-              "edition": "CCS 2026",
-              "conf_dates_text": "Nov 15 – 19, 2026",
-              "conf_start": "2026-11-15",
-              "conf_end": "2026-11-19",
-              "location": "The Hague, Netherlands",
-              "website": "https://www.sigsac.org/ccs/CCS2026/",
-              "cycles": [
-                {
-                  "track": "Cycle 1",
-                  "abstract": "2026-01-07",
-                  "submission": "2026-01-14",
-                  "notification": "2026-04-09",
-                  "tz": "AoE",
-                  "status": "closed"
-                },
-                {
-                  "track": "Cycle 2",
-                  "abstract": "2026-04-22",
-                  "submission": "2026-04-29",
-                  "notification": "2026-07-17",
-                  "tz": "AoE",
-                  "status": "closed"
-                }
-              ]
-            },
-            {
-              "edition": "CCS 2027",
-              "conf_dates_text": "Oct 2027 (TBA)",
-              "conf_start": null,
-              "conf_end": null,
-              "location": "Atlanta, USA",
-              "website": "https://www.sigsac.org/ccs/CCS2027/",
-              "cycles": [
-                {
-                  "track": "Research",
-                  "submission": null,
-                  "tz": "",
-                  "status": "tba"
-                }
-              ]
-            }
-          ],
-          "history": [
-            {
-              "year": 2025,
-              "submissions": 720,
-              "accepted": 122,
-              "note": "约"
-            },
-            {
-              "year": 2024,
-              "submissions": 690,
-              "accepted": 117,
-              "note": "约"
-            },
-            {
-              "year": 2023,
-              "submissions": 660,
-              "accepted": 112,
-              "note": "约"
-            }
-          ]
-        },
-        {
-          "key": "usenixsec",
-          "name": "USENIX Sec",
-          "full": "USENIX Security Symposium",
-          "rank": "CCF-A",
-          "editions": [
-            {
-              "edition": "USENIX Security 2027",
-              "conf_dates_text": "Aug 11 – 13, 2027",
-              "conf_start": "2027-08-11",
-              "conf_end": "2027-08-13",
-              "location": "Denver, CO, USA",
-              "website": "https://www.usenix.org/conference/usenixsecurity27",
-              "cycles": [
-                {
-                  "track": "Cycle 1",
-                  "abstract": "2026-08-18",
-                  "submission": "2026-08-25",
-                  "notification": "2026-12-03",
-                  "tz": "AoE",
-                  "status": "closed"
-                },
-                {
-                  "track": "Cycle 2",
-                  "abstract": "2027-01-19",
-                  "submission": "2027-01-26",
-                  "notification": "2027-05-06",
-                  "tz": "AoE",
-                  "status": "open"
-                }
-              ]
-            }
-          ],
-          "history": [
-            {
-              "year": 2025,
-              "submissions": 1500,
-              "accepted": 410,
-              "note": "约"
-            },
-            {
-              "year": 2024,
-              "submissions": 1489,
-              "accepted": 417,
-              "note": "约"
-            },
-            {
-              "year": 2023,
-              "submissions": 1420,
-              "accepted": 409,
-              "note": "约"
-            }
-          ]
-        },
-        {
-          "key": "ndss",
-          "name": "NDSS",
-          "full": "Network and Distributed System Security Symposium",
-          "rank": "CCF-A",
-          "editions": [
-            {
-              "edition": "NDSS 2027",
-              "conf_dates_text": "Mar 22 – 26, 2027",
-              "conf_start": "2027-03-22",
-              "conf_end": "2027-03-26",
-              "location": "Seoul, Republic of Korea",
-              "website": "https://www.ndss-symposium.org/ndss2027/",
-              "cycles": [
-                {
-                  "track": "Summer",
-                  "submission": "2026-05-06",
-                  "notification": "2026-07-29",
-                  "tz": "AoE",
-                  "status": "closed"
-                },
-                {
-                  "track": "Fall",
-                  "submission": "2026-08-19",
-                  "notification": "2026-11-04",
-                  "tz": "AoE",
-                  "status": "closed"
-                }
-              ]
-            },
-            {
-              "edition": "NDSS 2028",
-              "conf_dates_text": "TBA",
-              "conf_start": null,
-              "conf_end": null,
-              "location": "TBA",
-              "website": "https://www.ndss-symposium.org/",
-              "cycles": [
-                {
-                  "track": "Research",
-                  "submission": null,
-                  "tz": "",
-                  "status": "tba"
-                }
-              ]
-            }
-          ],
-          "history": [
-            {
-              "year": 2025,
-              "submissions": 610,
-              "accepted": 105,
-              "note": "约"
-            },
-            {
-              "year": 2024,
-              "submissions": 590,
-              "accepted": 101,
-              "note": "约"
-            },
-            {
-              "year": 2023,
-              "submissions": 560,
-              "accepted": 96,
-              "note": "约"
-            }
-          ]
-        }
-      ]
-    }
+    { "id": "se", "title": "软件工程四大顶会", "subtitle": "Software Engineering", "conferences": [
+      { "key": "icse", "name": "ICSE", "full": "IEEE/ACM International Conference on Software Engineering", "rank": "CCF-A", "frequency": "每年1次截稿",
+        "editions": [{ "edition": "ICSE 2027", "conf_dates_text": "Apr 25 – May 1, 2027 (core Apr 28-30)", "conf_start": "2027-04-25", "conf_end": "2027-05-01", "location": "Dublin, Ireland", "website": "https://conf.researchr.org/home/icse-2027",
+          "cycles": [
+            { "track": "Research", "abstract": "2026-06-23", "submission": "2026-06-30", "time": "23:59", "tz": "AoE", "notification": "2026-10-20", "status": "closed" },
+            { "track": "SEET (Education)", "submission": "2026-10-23", "time": "23:59", "tz": "AoE", "status": "open" }
+          ] }],
+        "history": [ { "year": 2025, "submissions": 650, "accepted": 130 }, { "year": 2024, "submissions": 615, "accepted": 124 }, { "year": 2023, "submissions": 580, "accepted": 120 } ] },
+      { "key": "fse", "name": "FSE", "full": "ACM International Conference on the Foundations of Software Engineering", "rank": "CCF-A", "frequency": "每年1次截稿",
+        "editions": [{ "edition": "FSE 2027", "conf_dates_text": "Jul 12 – 16, 2027", "conf_start": "2027-07-12", "conf_end": "2027-07-16", "location": "Shenzhen, China", "website": "https://conf.researchr.org/home/fse-2027",
+          "cycles": [
+            { "track": "Research", "submission": "2026-10-02", "time": "23:59", "tz": "AoE", "notification": "2027-01-22", "status": "open" },
+            { "track": "Workshop Proposals", "submission": "2026-10-15", "time": "23:59", "tz": "AoE", "status": "open" }
+          ] }],
+        "history": [ { "year": 2025, "submissions": 420, "accepted": 86 }, { "year": 2024, "submissions": 400, "accepted": 80 }, { "year": 2023, "submissions": 380, "accepted": 78 } ] },
+      { "key": "ase", "name": "ASE", "full": "IEEE/ACM International Conference on Automated Software Engineering", "rank": "CCF-A", "frequency": "每年1次截稿",
+        "editions": [
+          { "edition": "ASE 2026", "conf_dates_text": "Oct 12 – 16, 2026", "conf_start": "2026-10-12", "conf_end": "2026-10-16", "location": "Munich, Germany", "website": "https://conf.researchr.org/home/ase-2026",
+            "cycles": [ { "track": "Research", "submission": "2026-03-26", "time": "23:59", "tz": "AoE", "notification": "2026-06-18", "status": "closed" } ] },
+          { "edition": "ASE 2027", "conf_dates_text": "TBA", "conf_start": null, "conf_end": null, "location": "TBA", "website": "https://conf.researchr.org/home/ase-2027",
+            "cycles": [ { "track": "Research", "submission": null, "tz": "", "status": "tba" } ] }
+        ],
+        "history": [ { "year": 2025, "submissions": 450, "accepted": 90 }, { "year": 2024, "submissions": 430, "accepted": 86 }, { "year": 2023, "submissions": 410, "accepted": 82 } ] },
+      { "key": "issta", "name": "ISSTA", "full": "ACM SIGSOFT International Symposium on Software Testing and Analysis", "rank": "CCF-A", "frequency": "每年1次截稿",
+        "editions": [{ "edition": "ISSTA 2027", "conf_dates_text": "Sep 7 – 10, 2027", "conf_start": "2027-09-07", "conf_end": "2027-09-10", "location": "Singapore", "website": "https://conf.researchr.org/home/issta-2027",
+          "cycles": [ { "track": "Research", "abstract": "2027-01-08", "submission": "2027-01-11", "time": "23:59", "tz": "AoE", "notification": "2027-06-17", "status": "open" } ] }],
+        "history": [ { "year": 2025, "submissions": 220, "accepted": 44 }, { "year": 2024, "submissions": 200, "accepted": 40 }, { "year": 2023, "submissions": 190, "accepted": 38 } ] }
+    ] },
+    { "id": "sec", "title": "安全四大顶会", "subtitle": "Security", "conferences": [
+      { "key": "sp", "name": "IEEE S&P", "full": "IEEE Symposium on Security and Privacy (Oakland)", "rank": "CCF-A", "frequency": "每年2次截稿",
+        "editions": [{ "edition": "S&P 2027", "conf_dates_text": "May 17 – 20, 2027", "conf_start": "2027-05-17", "conf_end": "2027-05-20", "location": "Montreal, Canada", "website": "https://www.ieee-security.org/TC/SP2027/",
+          "cycles": [
+            { "track": "Cycle 1", "abstract": "2026-06-04", "submission": "2026-06-11", "time": "07:59", "tz": "EDT", "notification": "2026-09-11", "status": "closed" },
+            { "track": "Cycle 2", "abstract": "2026-11-10", "submission": "2026-11-17", "time": "07:59", "tz": "EDT", "notification": "2027-03-05", "status": "open" }
+          ] }],
+        "history": [ { "year": 2025, "submissions": 545, "accepted": 108 }, { "year": 2024, "submissions": 461, "accepted": 107 }, { "year": 2023, "submissions": 495, "accepted": 109 } ] },
+      { "key": "ccs", "name": "CCS", "full": "ACM SIGSAC Conference on Computer and Communications Security", "rank": "CCF-A", "frequency": "每年2次截稿",
+        "editions": [
+          { "edition": "CCS 2026", "conf_dates_text": "Nov 15 – 19, 2026", "conf_start": "2026-11-15", "conf_end": "2026-11-19", "location": "The Hague, Netherlands", "website": "https://www.sigsac.org/ccs/CCS2026/",
+            "cycles": [
+              { "track": "Cycle 1", "abstract": "2026-01-07", "submission": "2026-01-14", "time": "23:59", "tz": "AoE", "notification": "2026-04-09", "status": "closed" },
+              { "track": "Cycle 2", "abstract": "2026-04-22", "submission": "2026-04-29", "time": "23:59", "tz": "AoE", "notification": "2026-07-17", "status": "closed" }
+            ] },
+          { "edition": "CCS 2027", "conf_dates_text": "Oct 2027 (TBA)", "conf_start": null, "conf_end": null, "location": "Atlanta, USA", "website": "https://www.sigsac.org/ccs/CCS2027/",
+            "cycles": [ { "track": "Research", "submission": null, "tz": "", "status": "tba" } ] }
+        ],
+        "history": [ { "year": 2025, "submissions": 720, "accepted": 122 }, { "year": 2024, "submissions": 690, "accepted": 117 }, { "year": 2023, "submissions": 660, "accepted": 112 } ] },
+      { "key": "usenixsec", "name": "USENIX Sec", "full": "USENIX Security Symposium", "rank": "CCF-A", "frequency": "每年2次截稿",
+        "editions": [{ "edition": "USENIX Security 2027", "conf_dates_text": "Aug 11 – 13, 2027", "conf_start": "2027-08-11", "conf_end": "2027-08-13", "location": "Denver, CO, USA", "website": "https://www.usenix.org/conference/usenixsecurity27",
+          "cycles": [
+            { "track": "Cycle 1", "abstract": "2026-08-18", "submission": "2026-08-25", "time": "23:59", "tz": "AoE", "notification": "2026-12-03", "status": "closed" },
+            { "track": "Cycle 2", "abstract": "2027-01-19", "submission": "2027-01-26", "time": "23:59", "tz": "AoE", "notification": "2027-05-06", "status": "open" }
+          ] }],
+        "history": [ { "year": 2025, "submissions": 1500, "accepted": 410 }, { "year": 2024, "submissions": 1489, "accepted": 417 }, { "year": 2023, "submissions": 1420, "accepted": 409 } ] },
+      { "key": "ndss", "name": "NDSS", "full": "Network and Distributed System Security Symposium", "rank": "CCF-A", "frequency": "每年2次截稿",
+        "editions": [
+          { "edition": "NDSS 2027", "conf_dates_text": "Mar 22 – 26, 2027", "conf_start": "2027-03-22", "conf_end": "2027-03-26", "location": "Seoul, Republic of Korea", "website": "https://www.ndss-symposium.org/ndss2027/",
+            "cycles": [
+              { "track": "Summer", "submission": "2026-05-06", "time": "23:59", "tz": "AoE", "notification": "2026-07-29", "status": "closed" },
+              { "track": "Fall", "submission": "2026-08-19", "time": "23:59", "tz": "AoE", "notification": "2026-11-04", "status": "closed" }
+            ] },
+          { "edition": "NDSS 2028", "conf_dates_text": "TBA", "conf_start": null, "conf_end": null, "location": "TBA", "website": "https://www.ndss-symposium.org/",
+            "cycles": [ { "track": "Research", "submission": null, "tz": "", "status": "tba" } ] }
+        ],
+        "history": [ { "year": 2025, "submissions": 610, "accepted": 105 }, { "year": 2024, "submissions": 590, "accepted": 101 }, { "year": 2023, "submissions": 560, "accepted": 96 } ] }
+    ] }
   ]
 };
 </script>
 <script id="app">
-function aoeInstant(s){if(!s)return null;return new Date(s+"T23:59:59Z").getTime()+12*3600e3}
+const TZ_OFFSETS = {"AoE":-12,"UTC":0,"EDT":-4,"EST":-5,"PDT":-7,"PST":-8,"CET":1,"CEST":2,"JST":9,"SGT":8,"CST":8};
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function deadlineInstant(cycle){
+  if(!cycle||!cycle.submission) return null;
+  const t = cycle.time || "23:59";
+  const off = TZ_OFFSETS[cycle.tz];
+  if(off === undefined) return null;
+  const asUTC = new Date(cycle.submission + "T" + t + ":00Z");
+  return new Date(asUTC.getTime() - off*3600e3);
+}
+function confInstant(ed, key){
+  if(!ed||!ed[key]) return null;
+  return new Date(ed[key] + "T00:00:00Z");
+}
+function fmtLocal(dt){
+  if(!dt) return "TBA";
+  return dt.toLocaleString("zh-CN",{year:"numeric",month:"short",day:"numeric",hour:"2-digit",minute:"2-digit",hour12:false});
+}
 function fmtDate(s){if(!s)return"TBA";var d=new Date(s+(s.length<=10?"T00:00:00":""));if(isNaN(d))return s;return d.toLocaleDateString("zh-CN",{year:"numeric",month:"short",day:"numeric"})}
-function pickEdition(c){var e=c.editions||[];return e.find(function(x){return (x.cycles||[]).some(function(k){return k.status==="open"})})||e[e.length-1]}
-function pickCycle(e){var cs=e.cycles||[];var o=cs.filter(function(c){return c.status==="open"&&c.submission});if(o.length){o.sort(function(a,b){return aoeInstant(a.submission)-aoeInstant(b.submission)});return{c:o[0],k:"open"}}var cl=cs.filter(function(c){return c.status==="closed"&&c.submission});if(cl.length){cl.sort(function(a,b){return aoeInstant(b.submission)-aoeInstant(a.submission)});return{c:cl[0],k:"closed"}}return{c:cs.find(function(c){return c.status==="tba"})||cs[0],k:"tba"}}
-function uClass(days,k){if(k==="tba")return"utba";if(k==="closed")return"uclosed";if(days<=7)return"u7";if(days<=30)return"u30";if(days<=90)return"u90";return"ufar"}
-function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function pickEdition(c){var e=c.editions||[];return e.find(x=>(x.cycles||[]).some(k=>k.status==="open"))||e[0]}
+function pickPrimary(ed){
+  var cs=ed.cycles||[];
+  var o=cs.filter(c=>c.status==="open"&&c.submission);
+  if(o.length){o.sort((a,b)=>deadlineInstant(a)-deadlineInstant(b));return{c:o[0],k:"open"}}
+  var cl=cs.filter(c=>c.status==="closed"&&c.submission);
+  if(cl.length){cl.sort((a,b)=>deadlineInstant(b)-deadlineInstant(a));return{c:cl[0],k:"closed"}}
+  return{c:cs.find(c=>c.status==="tba")||cs[0],k:"tba"}
+}
+function uClass(days,k){if(k==="tba")return"utba";if(k==="closed")return"uclosed";if(k==="conf")return days<=30?"u30":days<=90?"u90":"ufar";if(days<=7)return"u7";if(days<=30)return"u30";if(days<=90)return"u90";return"ufar"}
 
-function renderCard(conf,gc){
-  var ed=pickEdition(conf),p=pickCycle(ed),cyc=p.c,kind=p.k;
-  var target=(kind==="open"||kind==="closed")?aoeInstant(cyc.submission):null;
-  var now=Date.now(),dp=target?target-now:NaN,past=dp<0;dp=Math.abs(dp);
-  var days=Math.floor(dp/864e5),hours=Math.floor((dp%864e5)/36e5),mins=Math.floor((dp%36e5)/6e4),secs=Math.floor((dp%6e4)/1e3);
-  var uc=uClass(days,kind);
-  var big,label,sub;
-  if(kind==="tba"||!cyc||!cyc.submission){big="待公布";label="截稿时间";sub="请关注官网";uc="utba"}
-  else if(kind==="closed"){big="已截止";label="截稿时间";sub="已于 "+fmtDate(cyc.submission)+" 截止（"+esc(cyc.track)+"）"}
-  else if(past){big="已截止";label="截稿时间";sub=fmtDate(cyc.submission)}
-  else{big=days;label="距截稿还剩（"+esc(cyc.track)+"）";sub="截稿 "+fmtDate(cyc.submission)+" · "+hours+"h "+mins+"m "+secs+"s"}
-  var h='<div class="card '+gc+'"><div class="card-head"><div><div class="name">'+esc(conf.name)+'</div><div class="full">'+esc(conf.full)+'</div></div><div class="rank">'+esc(conf.rank)+'</div></div>';
-  h+='<div class="countdown '+uc+'"><div class="label">'+label+'</div><div class="big">'+big+(typeof big==="number"?'<span class="unit">天</span>':'')+'</div><div class="sub">'+sub+'</div></div>';
+function buildCard(conf,gc){
+  var ed=pickEdition(conf),p=pickPrimary(ed),cyc=p.c,kind=p.k;
+  var target, label, mode;
+  if(kind==="open"){target=deadlineInstant(cyc);label="距截稿还剩（"+cyc.track+"）";mode="dl"}
+  else if(kind==="closed"&&ed.conf_start){target=confInstant(ed,"conf_start");label="截稿已截止 · 距会议开始";mode="conf"}
+  else if(kind==="closed"){label="已截止";mode="none"}
+  else{label="截稿时间";mode="tba"}
+  var id="cd_"+conf.key;
+  var h='<div class="card '+gc+'" data-key="'+conf.key+'">';
+  h+='<div class="card-head"><div><div class="name">'+esc(conf.name)+'</div><div class="full">'+esc(conf.full)+'</div></div><div class="rank">'+esc(conf.rank)+'</div></div>';
+  h+='<div class="freq">投稿频率：<b>'+esc(conf.frequency||"—")+'</b></div>';
+  h+='<div class="countdown" id="'+id+'"></div>';
   h+='<div class="info"><span class="k">届次</span><span class="v">'+esc(ed.edition)+'</span>';
   h+='<span class="k">会议时间</span><span class="v">'+esc(ed.conf_dates_text)+'</span>';
   h+='<span class="k">会议地点</span><span class="v">'+esc(ed.location)+'</span>';
   h+='<span class="k">官网</span><span class="v"><a href="'+esc(ed.website)+'" target="_blank">'+esc(ed.website)+'</a></span></div>';
   h+='<div class="cycles">';
-  (ed.cycles||[]).forEach(function(cy){
+  (ed.cycles||[]).forEach(cy=>{
     var badge=cy.status==="open"?"open":cy.status==="closed"?"closed":"tba";
-    var dtxt=cy.submission?("截稿 "+fmtDate(cy.submission)+(cy.tz?" ("+esc(cy.tz)+")":"")):"截稿 TBA";
-    if(cy.abstract)dtxt="摘要 "+fmtDate(cy.abstract)+" · "+dtxt;
-    if(cy.notification)dtxt+=" · 通知 "+fmtDate(cy.notification);
+    var dtxt=cy.submission?("截稿 "+fmtLocal(deadlineInstant(cy))):"截稿 TBA";
+    if(cy.tz&&cy.submission) dtxt+=" ("+esc(cy.tz)+(cy.time?" "+esc(cy.time):"")+")";
+    if(cy.abstract) dtxt="摘要 "+fmtLocal(deadlineInstant({...cy,submission:cy.abstract}))+" · "+dtxt;
+    if(cy.notification) dtxt+=" · 通知 "+fmtDate(cy.notification);
     h+='<div class="cycle"><span class="t">'+esc(cy.track)+'</span><span class="d">'+dtxt+'</span><span class="badge '+badge+'">'+(cy.status==="open"?"可投":cy.status==="closed"?"已截止":"待公布")+'</span></div>';
   });
   h+='</div>';
   if(conf.history&&conf.history.length){
     h+='<details class="history"><summary>历年投稿/录用统计</summary><table><tr><th>年份</th><th>投稿</th><th>录用</th><th>录用率</th></tr>';
-    conf.history.forEach(function(r){var rate=(r.accepted&&r.submissions)?(r.accepted/r.submissions*100).toFixed(1)+"%":"—";h+='<tr><td>'+r.year+'</td><td>'+(r.submissions||"—")+'</td><td>'+(r.accepted||"—")+'</td><td class="rate">'+rate+'</td></tr>'});
+    conf.history.forEach(r=>{var rate=(r.accepted&&r.submissions)?(r.accepted/r.submissions*100).toFixed(1)+"%":"—";h+='<tr><td>'+r.year+'</td><td>'+(r.submissions||"—")+'</td><td>'+(r.accepted||"—")+'</td><td class="rate">'+rate+'</td></tr>'});
     h+='</table><div class="note">数字为近似参考值，请以官网为准。</div></details>';
   }
   h+='</div>';
-  return h;
+  return {html:h, target:target, label:label, mode:mode, kind:kind};
 }
-
-function render(){
-  var D=window.CONF_DATA;document.getElementById("lastUpdated").textContent=D.last_updated;
-  document.getElementById("now").textContent=new Date().toLocaleString("zh-CN");
+const CARDS={};
+function renderOnce(){
+  var D=window.CONF_DATA;
+  document.getElementById("lastUpdated").textContent=D.last_updated;
   var root=document.getElementById("root");root.innerHTML="";
-  D.groups.forEach(function(g){
-    var gh='<div class="group '+g.id+'"><h2><span class="bar"></span>'+esc(g.title)+' <span class="tag">'+esc(g.subtitle)+'</span></h2><div class="grid">';
-    var cards=g.conferences.map(function(c){return renderCard(c,g.id==="se"?"se":"sec")});
-    cards.sort(function(a,b){var da=cardDays(a),db=cardDays(b);return da-db});
-    gh+=cards.join("")+'</div></div>';
+  D.groups.forEach(g=>{
+    var gh='<div class="group '+g.id+'"><h2><span class="bar"></span>'+esc(g.title)+' <span class="tag">'+esc(g.subtitle)+'</span></h2><div class="grid" id="grid_'+g.id+'"></div></div>';
     root.insertAdjacentHTML("beforeend",gh);
+    var grid=document.getElementById("grid_"+g.id);
+    var built=g.conferences.map(c=>buildCard(c,g.id==="se"?"se":"sec"));
+    built.sort((a,b)=>sortKey(a)-sortKey(b));
+    built.forEach(b=>{var m=b.html.match(/data-key="([^"]+)"/);var key=m[1];CARDS[key]={target:b.target,label:b.label,mode:b.mode,kind:b.kind};grid.insertAdjacentHTML("beforeend",b.html)});
+  });
+  tick();
+}
+function sortKey(b){
+  if(b.mode==="dl"&&b.target){var d=(b.target-Date.now())/864e5;return Math.max(0,d)}
+  if(b.mode==="conf"&&b.target){var d=(b.target-Date.now())/864e5;return Math.max(0,d)+100000}
+  return 1e9;
+}
+function tick(){
+  document.getElementById("now").textContent=new Date().toLocaleString("zh-CN");
+  Object.keys(CARDS).forEach(key=>{
+    var info=CARDS[key],el=document.getElementById("cd_"+key);
+    if(!el)return;
+    var target=info.target,label=info.label,mode=info.mode,kind=info.kind;
+    if(mode==="tba"||!target){el.className="countdown utba";el.innerHTML='<div class="label">'+esc(label)+'</div><div class="big">待公布</div>';return}
+    var ms=target.getTime()-Date.now(),past=ms<0;ms=Math.abs(ms);
+    var d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5),mi=Math.floor(ms%36e5/6e4),s=Math.floor(ms%6e4/1e3);
+    if(past){
+      el.className="countdown uclosed";
+      el.innerHTML='<div class="label">'+esc(label)+'</div><div class="big">已截止</div><div class="sub">'+fmtLocal(target)+'</div>';return;
+    }
+    var uc=uClass(d,mode==="conf"?"conf":kind);
+    var big=d+'<span class="u">天</span>'+h+'<span class="u">时</span>'+mi+'<span class="u">分</span>';
+    var sub=mode==="dl"?("截稿："+fmtLocal(target)):(mode==="conf"?("会议开始："+fmtLocal(target)):"");
+    el.className="countdown "+uc;
+    el.innerHTML='<div class="label">'+esc(label)+'</div><div class="big">'+big+'</div><div class="sub">'+sub+'</div>';
   });
 }
-function cardDays(html){var m=html.match(/class="big">(\d+)<span/);return m?parseInt(m[1]):99999}
-render();setInterval(render,1000);
-
+renderOnce();
+setInterval(tick,1000);
 </script>
 </body>
 </html>
