@@ -17,6 +17,10 @@
   .legend{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:14px auto 0;font-size:12px;color:var(--muted)}
   .legend span{display:inline-flex;align-items:center;gap:5px}
   .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+  .sortbar{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:16px auto 0;font-size:13px;color:var(--muted)}
+  .sortbar button{cursor:pointer;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--text);padding:6px 12px;border-radius:999px;font-size:13px}
+  .sortbar button:hover{border-color:#3a4a72}
+  .sortbar button.active{background:rgba(78,161,255,.18);border-color:var(--se);color:var(--text);font-weight:700}
   .group{margin-top:30px}
   .group>h2{font-size:20px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:10px}
   .group>h2 .bar{width:6px;height:22px;border-radius:3px}
@@ -97,6 +101,11 @@
       <span><i class="dot" style="background:var(--yellow)"></i>≤90天 准备中</span>
       <span><i class="dot" style="background:var(--green)"></i>&gt;90天 充裕</span>
       <span><i class="dot" style="background:var(--gray)"></i>已截止/待公布</span>
+    </div>
+    <div class="sortbar">
+      按截稿剩余
+      <button type="button" id="sortAsc" class="active">从短到长</button>
+      <button type="button" id="sortDesc">从长到短</button>
     </div>
   </header>
   <div id="root"></div>
@@ -809,6 +818,32 @@ function buildCard(conf,gc){
   return {html:h, target:target, label:label, mode:mode, kind:kind};
 }
 const CARDS={};
+var SORT_DIR=localStorage.getItem("confSortDir")||"asc";
+function cardSortKey(info){
+  if((info.mode==="dl"||info.mode==="pred")&&info.target){return Math.max(0,(info.target-Date.now())/864e5)}
+  return 1e9;
+}
+function applySort(){
+  ["se","sec"].forEach(gid=>{
+    var grid=document.getElementById("grid_"+gid);
+    if(!grid)return;
+    var cards=[].slice.call(grid.querySelectorAll(".card"));
+    cards.sort(function(a,b){
+      var ka=cardSortKey(CARDS[a.getAttribute("data-key")]||{});
+      var kb=cardSortKey(CARDS[b.getAttribute("data-key")]||{});
+      return SORT_DIR==="asc"?ka-kb:kb-ka;
+    });
+    cards.forEach(function(c){grid.appendChild(c)});
+  });
+  var asc=document.getElementById("sortAsc"),desc=document.getElementById("sortDesc");
+  if(asc)asc.className=SORT_DIR==="asc"?"active":"";
+  if(desc)desc.className=SORT_DIR==="desc"?"active":"";
+}
+function setSort(dir){
+  SORT_DIR=dir;
+  try{localStorage.setItem("confSortDir",dir)}catch(e){}
+  applySort();
+}
 function renderOnce(){
   var D=window.CONF_DATA;
   document.getElementById("lastUpdated").textContent=D.last_updated;
@@ -818,14 +853,10 @@ function renderOnce(){
     root.insertAdjacentHTML("beforeend",gh);
     var grid=document.getElementById("grid_"+g.id);
     var built=g.conferences.map(c=>buildCard(c,g.id==="se"?"se":"sec"));
-    built.sort((a,b)=>sortKey(a)-sortKey(b));
     built.forEach(b=>{var m=b.html.match(/data-key="([^"]+)"/);var key=m[1];CARDS[key]={target:b.target,label:b.label,mode:b.mode,kind:b.kind};grid.insertAdjacentHTML("beforeend",b.html)});
   });
+  applySort();
   tick();
-}
-function sortKey(b){
-  if((b.mode==="dl"||b.mode==="pred")&&b.target){var d=(b.target-Date.now())/864e5;return Math.max(0,d)}
-  return 1e9;
 }
 function tick(){
   document.getElementById("now").textContent=new Date().toLocaleString("zh-CN",{timeZone:"Asia/Shanghai"});
@@ -847,6 +878,8 @@ function tick(){
     el.innerHTML='<div class="label">'+esc(label)+'</div><div class="big">'+big+'</div><div class="sub">'+sub+'</div>';
   });
 }
+document.getElementById("sortAsc").onclick=function(){setSort("asc")};
+document.getElementById("sortDesc").onclick=function(){setSort("desc")};
 renderOnce();
 setInterval(tick,1000);
 </script>
