@@ -74,6 +74,14 @@
   .history th:first-child,.history td:first-child{text-align:left}
   .history td.rate{color:var(--green);font-weight:600}
   .history .note{font-size:10px;color:var(--muted);margin-top:4px}
+  .pastdl{margin-top:12px;font-size:12px}
+  .pastdl h3{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:6px}
+  .pastdl table{width:100%;border-collapse:collapse}
+  .pastdl th,.pastdl td{padding:5px 8px;text-align:right;border-bottom:1px solid var(--border)}
+  .pastdl th{color:var(--muted);font-weight:600}
+  .pastdl th:first-child,.pastdl td:first-child{text-align:left}
+  .pastdl td.pred{color:var(--yellow);font-weight:600}
+  .badge.pred{background:rgba(241,196,15,.15);color:var(--yellow)}
   code{background:rgba(255,255,255,.08);padding:1px 5px;border-radius:4px;font-size:90%}
 </style>
 </head>
@@ -149,6 +157,28 @@ window.CONF_DATA = {
               "year": 2024,
               "accepted": 234
             }
+          ],
+          "pastDeadlines": [
+            {
+              "edition": "ICSE 2025",
+              "track": "Research Cycle 1",
+              "submission": "2024-03-22"
+            },
+            {
+              "edition": "ICSE 2026",
+              "track": "Research Cycle 1",
+              "submission": "2025-03-14"
+            },
+            {
+              "edition": "ICSE 2026",
+              "track": "Research Cycle 2",
+              "submission": "2025-07-18"
+            },
+            {
+              "edition": "ICSE 2027",
+              "track": "Research",
+              "submission": "2026-06-30"
+            }
           ]
         },
         {
@@ -192,6 +222,18 @@ window.CONF_DATA = {
             {
               "year": 2024,
               "accepted": 121
+            }
+          ],
+          "pastDeadlines": [
+            {
+              "edition": "FSE 2026",
+              "track": "Research",
+              "submission": "2025-09-11"
+            },
+            {
+              "edition": "FSE 2027",
+              "track": "Research",
+              "submission": "2026-10-02"
             }
           ]
         },
@@ -246,6 +288,31 @@ window.CONF_DATA = {
               "year": 2024,
               "accepted": 155
             }
+          ],
+          "pastDeadlines": [
+            {
+              "edition": "ASE 2024",
+              "track": "Research",
+              "submission": "2024-06-07"
+            },
+            {
+              "edition": "ASE 2025",
+              "track": "Research",
+              "submission": "2025-05-30"
+            },
+            {
+              "edition": "ASE 2026",
+              "track": "Research",
+              "submission": "2026-03-26"
+            }
+          ],
+          "predicted": [
+            {
+              "edition": "ASE 2027",
+              "track": "Research",
+              "submission": "2027-03-26",
+              "note": "按 ASE 2026；前两年为 5 月底/6 月初，波动较大"
+            }
           ]
         },
         {
@@ -283,6 +350,18 @@ window.CONF_DATA = {
             {
               "year": 2024,
               "accepted": 143
+            }
+          ],
+          "pastDeadlines": [
+            {
+              "edition": "ISSTA 2026",
+              "track": "Research",
+              "submission": "2026-01-29"
+            },
+            {
+              "edition": "ISSTA 2027",
+              "track": "Research",
+              "submission": "2027-01-11"
             }
           ]
         }
@@ -341,6 +420,18 @@ window.CONF_DATA = {
             {
               "year": 2024,
               "accepted": 261
+            }
+          ],
+          "pastDeadlines": [
+            {
+              "edition": "S&P 2027",
+              "track": "Cycle 1",
+              "submission": "2026-06-11"
+            },
+            {
+              "edition": "S&P 2027",
+              "track": "Cycle 2",
+              "submission": "2026-11-17"
             }
           ]
         },
@@ -405,6 +496,52 @@ window.CONF_DATA = {
               "year": 2024,
               "accepted": 328
             }
+          ],
+          "pastDeadlines": [
+            {
+              "edition": "CCS 2024",
+              "track": "Cycle 1",
+              "submission": "2024-01-28"
+            },
+            {
+              "edition": "CCS 2024",
+              "track": "Cycle 2",
+              "submission": "2024-04-29"
+            },
+            {
+              "edition": "CCS 2025",
+              "track": "Cycle 1",
+              "submission": "2025-01-09"
+            },
+            {
+              "edition": "CCS 2025",
+              "track": "Cycle 2",
+              "submission": "2025-04-14"
+            },
+            {
+              "edition": "CCS 2026",
+              "track": "Cycle 1",
+              "submission": "2026-01-14"
+            },
+            {
+              "edition": "CCS 2026",
+              "track": "Cycle 2",
+              "submission": "2026-04-29"
+            }
+          ],
+          "predicted": [
+            {
+              "edition": "CCS 2027",
+              "track": "Cycle 1",
+              "submission": "2027-01-14",
+              "note": "近三年 Cycle 1 均在 1 月上旬–下旬"
+            },
+            {
+              "edition": "CCS 2027",
+              "track": "Cycle 2",
+              "submission": "2027-04-29",
+              "note": "近三年 Cycle 2 均在 4 月中下旬"
+            }
           ]
         },
         {
@@ -451,6 +588,18 @@ window.CONF_DATA = {
             {
               "year": 2024,
               "accepted": 417
+            }
+          ],
+          "pastDeadlines": [
+            {
+              "edition": "USENIX Security 2027",
+              "track": "Cycle 1",
+              "submission": "2026-08-25"
+            },
+            {
+              "edition": "USENIX Security 2027",
+              "track": "Cycle 2",
+              "submission": "2027-01-26"
             }
           ]
         },
@@ -517,6 +666,52 @@ window.CONF_DATA = {
               "year": 2024,
               "accepted": 140
             }
+          ],
+          "pastDeadlines": [
+            {
+              "edition": "NDSS 2025",
+              "track": "Summer",
+              "submission": "2024-04-17"
+            },
+            {
+              "edition": "NDSS 2025",
+              "track": "Fall",
+              "submission": "2024-07-10"
+            },
+            {
+              "edition": "NDSS 2026",
+              "track": "Summer",
+              "submission": "2025-04-23"
+            },
+            {
+              "edition": "NDSS 2026",
+              "track": "Fall",
+              "submission": "2025-08-06"
+            },
+            {
+              "edition": "NDSS 2027",
+              "track": "Summer",
+              "submission": "2026-05-06"
+            },
+            {
+              "edition": "NDSS 2027",
+              "track": "Fall",
+              "submission": "2026-08-19"
+            }
+          ],
+          "predicted": [
+            {
+              "edition": "NDSS 2028",
+              "track": "Summer",
+              "submission": "2027-05-05",
+              "note": "近年 Summer 在 4 月下旬–5 月初，且多为周三"
+            },
+            {
+              "edition": "NDSS 2028",
+              "track": "Fall",
+              "submission": "2027-08-18",
+              "note": "近年 Fall 从 7 月推迟到 8 月中旬，且多为周三"
+            }
           ]
         }
       ]
@@ -530,21 +725,24 @@ function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;","
 function deadlineInstant(cycle){
   if(!cycle||!cycle.submission) return null;
   const t = cycle.time || "23:59";
-  const off = TZ_OFFSETS[cycle.tz];
+  const tz = cycle.tz || "AoE";
+  const off = TZ_OFFSETS[tz];
   if(off === undefined) return null;
   const asUTC = new Date(cycle.submission + "T" + t + ":00Z");
   return new Date(asUTC.getTime() - off*3600e3);
-}
-function confInstant(ed, key){
-  if(!ed||!ed[key]) return null;
-  return new Date(ed[key] + "T00:00:00Z");
 }
 function fmtLocal(dt){
   if(!dt) return "TBA";
   return dt.toLocaleString("zh-CN",{timeZone:"Asia/Shanghai",year:"numeric",month:"short",day:"numeric",hour:"2-digit",minute:"2-digit",hour12:false});
 }
 function fmtDate(s){if(!s)return"TBA";var d=new Date(s+(s.length<=10?"T00:00:00":""));if(isNaN(d))return s;return d.toLocaleDateString("zh-CN",{timeZone:"Asia/Shanghai",year:"numeric",month:"short",day:"numeric"})}
-function pickEdition(c){var e=c.editions||[];return e.find(x=>(x.cycles||[]).some(k=>k.status==="open"))||e[0]}
+function pickEdition(c){
+  var e=c.editions||[];
+  var open=e.find(x=>(x.cycles||[]).some(k=>k.status==="open"));
+  if(open) return open;
+  var tba=e.find(x=>(x.cycles||[]).some(k=>k.status==="tba"));
+  return tba||e[0];
+}
 function pickPrimary(ed){
   var cs=ed.cycles||[];
   var o=cs.filter(c=>c.status==="open"&&c.submission);
@@ -553,15 +751,24 @@ function pickPrimary(ed){
   if(cl.length){cl.sort((a,b)=>deadlineInstant(b)-deadlineInstant(a));return{c:cl[0],k:"closed"}}
   return{c:cs.find(c=>c.status==="tba")||cs[0],k:"tba"}
 }
-function uClass(days,k){if(k==="tba")return"utba";if(k==="closed")return"uclosed";if(k==="conf")return days<=30?"u30":days<=90?"u90":"ufar";if(days<=7)return"u7";if(days<=30)return"u30";if(days<=90)return"u90";return"ufar"}
+function nextPredicted(conf){
+  var now=Date.now();
+  var list=(conf.predicted||[]).filter(p=>p.submission).map(p=>({p,t:deadlineInstant({submission:p.submission,time:"23:59",tz:"AoE"})})).filter(x=>x.t);
+  var future=list.filter(x=>x.t.getTime()>now);
+  if(future.length){future.sort((a,b)=>a.t-b.t);return future[0]}
+  return null;
+}
+function uClass(days,k){if(k==="tba")return"utba";if(k==="closed")return"uclosed";if(days<=7)return"u7";if(days<=30)return"u30";if(days<=90)return"u90";return"ufar"}
 
 function buildCard(conf,gc){
   var ed=pickEdition(conf),p=pickPrimary(ed),cyc=p.c,kind=p.k;
   var target, label, mode;
   if(kind==="open"){target=deadlineInstant(cyc);label="距截稿还剩（"+cyc.track+"）";mode="dl"}
-  else if(kind==="closed"&&ed.conf_start){target=confInstant(ed,"conf_start");label="截稿已截止 · 距会议开始";mode="conf"}
-  else if(kind==="closed"){label="已截止";mode="none"}
-  else{label="截稿时间";mode="tba"}
+  else {
+    var np=nextPredicted(conf);
+    if(np){target=np.t;label="距预测截稿还剩（"+np.p.edition+" "+np.p.track+"）";mode="pred"}
+    else {label="截稿时间";mode="tba"}
+  }
   var id="cd_"+conf.key;
   var h='<div class="card '+gc+'" data-key="'+conf.key+'">';
   h+='<div class="card-head"><div><div class="name">'+esc(conf.name)+'</div><div class="full">'+esc(conf.full)+'</div></div><div class="rank">'+esc(conf.rank)+'</div></div>';
@@ -575,12 +782,24 @@ function buildCard(conf,gc){
   (ed.cycles||[]).forEach(cy=>{
     var badge=cy.status==="open"?"open":cy.status==="closed"?"closed":"tba";
     var dtxt=cy.submission?("截稿 "+fmtLocal(deadlineInstant(cy))):"截稿 TBA";
-    
     if(cy.abstract) dtxt="摘要 "+fmtLocal(deadlineInstant({...cy,submission:cy.abstract}))+" · "+dtxt;
     if(cy.notification) dtxt+=" · 通知 "+fmtDate(cy.notification);
     h+='<div class="cycle"><span class="t">'+esc(cy.track)+'</span><span class="d">'+dtxt+'</span><span class="badge '+badge+'">'+(cy.status==="open"?"可投":cy.status==="closed"?"已截止":"待公布")+'</span></div>';
   });
   h+='</div>';
+  if(conf.pastDeadlines&&conf.pastDeadlines.length){
+    h+='<div class="pastdl"><h3>历年截稿（北京时间）</h3><table><tr><th>届次</th><th>批次</th><th>截稿</th></tr>';
+    conf.pastDeadlines.forEach(r=>{
+      h+='<tr><td>'+esc(r.edition)+'</td><td>'+esc(r.track)+'</td><td>'+fmtLocal(deadlineInstant({submission:r.submission,time:"23:59",tz:"AoE"}))+'</td></tr>';
+    });
+    (conf.predicted||[]).forEach(r=>{
+      h+='<tr><td class="pred">'+esc(r.edition)+'</td><td class="pred">'+esc(r.track)+' · 预测</td><td class="pred">'+fmtLocal(deadlineInstant({submission:r.submission,time:"23:59",tz:"AoE"}))+'</td></tr>';
+    });
+    h+='</table>';
+    var notes=(conf.predicted||[]).map(x=>x.note).filter(Boolean);
+    if(notes.length) h+='<div class="note">预测依据：'+esc(notes[0])+'。非官方日期，以官网为准。</div>';
+    h+='</div>';
+  }
   if(conf.history&&conf.history.length){
     h+='<details class="history"><summary>历年录用统计</summary><table><tr><th>年份</th><th>录用论文数</th></tr>';
     conf.history.forEach(r=>{h+='<tr><td>'+r.year+'</td><td>'+(r.accepted!=null?r.accepted:"—")+'</td></tr>'});
@@ -605,8 +824,7 @@ function renderOnce(){
   tick();
 }
 function sortKey(b){
-  if(b.mode==="dl"&&b.target){var d=(b.target-Date.now())/864e5;return Math.max(0,d)}
-  if(b.mode==="conf"&&b.target){var d=(b.target-Date.now())/864e5;return Math.max(0,d)+100000}
+  if((b.mode==="dl"||b.mode==="pred")&&b.target){var d=(b.target-Date.now())/864e5;return Math.max(0,d)}
   return 1e9;
 }
 function tick(){
@@ -614,17 +832,17 @@ function tick(){
   Object.keys(CARDS).forEach(key=>{
     var info=CARDS[key],el=document.getElementById("cd_"+key);
     if(!el)return;
-    var target=info.target,label=info.label,mode=info.mode,kind=info.kind;
+    var target=info.target,label=info.label,mode=info.mode;
     if(mode==="tba"||!target){el.className="countdown utba";el.innerHTML='<div class="label">'+esc(label)+'</div><div class="big">待公布</div>';return}
     var ms=target.getTime()-Date.now(),past=ms<0;ms=Math.abs(ms);
-    var d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5),mi=Math.floor(ms%36e5/6e4),s=Math.floor(ms%6e4/1e3);
+    var d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5),mi=Math.floor(ms%36e5/6e4);
     if(past){
       el.className="countdown uclosed";
       el.innerHTML='<div class="label">'+esc(label)+'</div><div class="big">已截止</div><div class="sub">'+fmtLocal(target)+'</div>';return;
     }
-    var uc=uClass(d,mode==="conf"?"conf":kind);
+    var uc=uClass(d,mode==="pred"?"open":mode);
     var big=d+'<span class="u">天</span>'+h+'<span class="u">时</span>'+mi+'<span class="u">分</span>';
-    var sub=mode==="dl"?("截稿："+fmtLocal(target)):(mode==="conf"?("会议开始："+fmtLocal(target)):"");
+    var sub=(mode==="pred"?"预测截稿：":"截稿：")+fmtLocal(target)+(mode==="pred"?"（非官方）":"");
     el.className="countdown "+uc;
     el.innerHTML='<div class="label">'+esc(label)+'</div><div class="big">'+big+'</div><div class="sub">'+sub+'</div>';
   });
