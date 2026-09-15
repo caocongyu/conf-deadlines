@@ -21,6 +21,8 @@
   .sortbar button{cursor:pointer;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--text);padding:6px 12px;border-radius:999px;font-size:13px}
   .sortbar button:hover{border-color:#3a4a72}
   .sortbar button.active{background:rgba(78,161,255,.18);border-color:var(--se);color:var(--text);font-weight:700}
+  .sortbar span{margin-left:10px}
+  .sortbar span:first-child{margin-left:0}
   .group{margin-top:30px}
   .group>h2{font-size:20px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:10px}
   .group>h2 .bar{width:6px;height:22px;border-radius:3px}
@@ -103,9 +105,12 @@
       <span><i class="dot" style="background:var(--gray)"></i>已截止/待公布</span>
     </div>
     <div class="sortbar">
-      按截稿剩余
-      <button type="button" id="sortAsc" class="active">从短到长</button>
-      <button type="button" id="sortDesc">从长到短</button>
+      <span>按截稿剩余</span>
+      <button type="button" id="sortDlAsc" class="active">从短到长</button>
+      <button type="button" id="sortDlDesc">从长到短</button>
+      <span>按上一年录用</span>
+      <button type="button" id="sortAccDesc">从多到少</button>
+      <button type="button" id="sortAccAsc">从少到多</button>
     </div>
   </header>
   <div id="root"></div>
@@ -815,11 +820,19 @@ function buildCard(conf,gc){
     h+='</table><div class="note">录用数来源：各会议官网 Accepted Papers 页面（主会/Research Track，不含 workshop/poster）。数据截至 2026-06-24。<br>投稿数多数会议不公布，故不列。</div></details>';
   }
   h+='</div>';
-  return {html:h, target:target, label:label, mode:mode, kind:kind};
+  return {html:h, target:target, label:label, mode:mode, kind:kind, accepted:latestAccepted(conf)};
+}
+function latestAccepted(conf){
+  var rows=(conf.history||[]).filter(function(r){return r.accepted!=null});
+  if(!rows.length) return -1;
+  rows.sort(function(a,b){return b.year-a.year});
+  return rows[0].accepted;
 }
 const CARDS={};
+var SORT_MODE=localStorage.getItem("confSortMode")||"deadline";
 var SORT_DIR=localStorage.getItem("confSortDir")||"asc";
 function cardSortKey(info){
+  if(SORT_MODE==="accepted") return info.accepted!=null?info.accepted:-1;
   if((info.mode==="dl"||info.mode==="pred")&&info.target){return Math.max(0,(info.target-Date.now())/864e5)}
   return 1e9;
 }
@@ -835,13 +848,12 @@ function applySort(){
     });
     cards.forEach(function(c){grid.appendChild(c)});
   });
-  var asc=document.getElementById("sortAsc"),desc=document.getElementById("sortDesc");
-  if(asc)asc.className=SORT_DIR==="asc"?"active":"";
-  if(desc)desc.className=SORT_DIR==="desc"?"active":"";
+  var map={sortDlAsc:SORT_MODE==="deadline"&&SORT_DIR==="asc",sortDlDesc:SORT_MODE==="deadline"&&SORT_DIR==="desc",sortAccDesc:SORT_MODE==="accepted"&&SORT_DIR==="desc",sortAccAsc:SORT_MODE==="accepted"&&SORT_DIR==="asc"};
+  Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)el.className=map[id]?"active":""});
 }
-function setSort(dir){
-  SORT_DIR=dir;
-  try{localStorage.setItem("confSortDir",dir)}catch(e){}
+function setSort(mode,dir){
+  SORT_MODE=mode;SORT_DIR=dir;
+  try{localStorage.setItem("confSortMode",mode);localStorage.setItem("confSortDir",dir)}catch(e){}
   applySort();
 }
 function renderOnce(){
@@ -853,7 +865,7 @@ function renderOnce(){
     root.insertAdjacentHTML("beforeend",gh);
     var grid=document.getElementById("grid_"+g.id);
     var built=g.conferences.map(c=>buildCard(c,g.id==="se"?"se":"sec"));
-    built.forEach(b=>{var m=b.html.match(/data-key="([^"]+)"/);var key=m[1];CARDS[key]={target:b.target,label:b.label,mode:b.mode,kind:b.kind};grid.insertAdjacentHTML("beforeend",b.html)});
+    built.forEach(b=>{var m=b.html.match(/data-key="([^"]+)"/);var key=m[1];CARDS[key]={target:b.target,label:b.label,mode:b.mode,kind:b.kind,accepted:b.accepted};grid.insertAdjacentHTML("beforeend",b.html)});
   });
   applySort();
   tick();
@@ -878,8 +890,10 @@ function tick(){
     el.innerHTML='<div class="label">'+esc(label)+'</div><div class="big">'+big+'</div><div class="sub">'+sub+'</div>';
   });
 }
-document.getElementById("sortAsc").onclick=function(){setSort("asc")};
-document.getElementById("sortDesc").onclick=function(){setSort("desc")};
+document.getElementById("sortDlAsc").onclick=function(){setSort("deadline","asc")};
+document.getElementById("sortDlDesc").onclick=function(){setSort("deadline","desc")};
+document.getElementById("sortAccDesc").onclick=function(){setSort("accepted","desc")};
+document.getElementById("sortAccAsc").onclick=function(){setSort("accepted","asc")};
 renderOnce();
 setInterval(tick,1000);
 </script>
