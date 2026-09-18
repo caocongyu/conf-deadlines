@@ -148,13 +148,6 @@ window.CONF_DATA = {
                   "tz": "AoE",
                   "notification": "2026-10-20",
                   "status": "closed"
-                },
-                {
-                  "track": "SEET (Education)",
-                  "submission": "2026-10-23",
-                  "time": "23:59",
-                  "tz": "AoE",
-                  "status": "open"
                 }
               ]
             },
@@ -243,13 +236,6 @@ window.CONF_DATA = {
                   "time": "23:59",
                   "tz": "AoE",
                   "notification": "2027-01-22",
-                  "status": "open"
-                },
-                {
-                  "track": "Workshop Proposals",
-                  "submission": "2026-10-15",
-                  "time": "23:59",
-                  "tz": "AoE",
                   "status": "open"
                 }
               ]
@@ -826,7 +812,7 @@ function buildCard(conf,gc){
   h+='<span class="k">会议地点</span><span class="v">'+esc(ed.location)+'</span>';
   h+='<span class="k">官网</span><span class="v"><a href="'+esc(ed.website)+'" target="_blank">'+esc(ed.website)+'</a></span></div>';
   h+='<div class="cycles">';
-  (ed.cycles||[]).forEach(cy=>{
+  (ed.cycles||[]).filter(function(cy){return cycleIsMain(cy,ed.cycles)}).forEach(cy=>{
     var badge=cy.status==="open"?"open":cy.status==="closed"?"closed":"tba";
     var dtxt=cy.submission?("截稿 "+fmtLocal(deadlineInstant(cy))):"截稿 TBA";
     if(cy.abstract) dtxt="摘要 "+fmtLocal(deadlineInstant({...cy,submission:cy.abstract}))+" · "+dtxt;
