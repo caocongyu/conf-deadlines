@@ -117,7 +117,7 @@
 </div>
 <script id="data">
 window.CONF_DATA = {
-  "last_updated": "2026-09-15",
+  "last_updated": "2026-09-18",
   "groups": [
     {
       "id": "se",
@@ -141,6 +141,7 @@ window.CONF_DATA = {
               "cycles": [
                 {
                   "track": "Research",
+                  "primary": true,
                   "abstract": "2026-06-23",
                   "submission": "2026-06-30",
                   "time": "23:59",
@@ -154,6 +155,23 @@ window.CONF_DATA = {
                   "time": "23:59",
                   "tz": "AoE",
                   "status": "open"
+                }
+              ]
+            },
+            {
+              "edition": "ICSE 2028",
+              "conf_dates_text": "TBA",
+              "conf_start": null,
+              "conf_end": null,
+              "location": "North America (TBA)",
+              "website": "https://conf.researchr.org/series/icse",
+              "cycles": [
+                {
+                  "track": "Research",
+                  "primary": true,
+                  "submission": null,
+                  "tz": "",
+                  "status": "tba"
                 }
               ]
             }
@@ -193,6 +211,14 @@ window.CONF_DATA = {
               "track": "Research",
               "submission": "2026-06-30"
             }
+          ],
+          "predicted": [
+            {
+              "edition": "ICSE 2028",
+              "track": "Research",
+              "submission": "2027-06-30",
+              "note": "ICSE 从 2027 起改为单周期暑期截稿；2028 CFP 未公布，按 2027 的 6/30 预测"
+            }
           ]
         },
         {
@@ -212,6 +238,7 @@ window.CONF_DATA = {
               "cycles": [
                 {
                   "track": "Research",
+                  "primary": true,
                   "submission": "2026-10-02",
                   "time": "23:59",
                   "tz": "AoE",
@@ -750,20 +777,26 @@ function fmtLocal(dt){
   return dt.toLocaleString("zh-CN",{timeZone:"Asia/Shanghai",year:"numeric",month:"short",day:"numeric",hour:"2-digit",minute:"2-digit",hour12:false});
 }
 function fmtDate(s){if(!s)return"TBA";var d=new Date(s+(s.length<=10?"T00:00:00":""));if(isNaN(d))return s;return d.toLocaleDateString("zh-CN",{timeZone:"Asia/Shanghai",year:"numeric",month:"short",day:"numeric"})}
+function cycleIsMain(cy, cycles){
+  if(!(cycles||[]).some(function(x){return x.primary})) return true;
+  return !!cy.primary;
+}
 function pickEdition(c){
   var e=c.editions||[];
-  var open=e.find(x=>(x.cycles||[]).some(k=>k.status==="open"));
+  var open=e.find(x=>(x.cycles||[]).some(k=>k.status==="open"&&k.submission&&cycleIsMain(k,x.cycles)));
   if(open) return open;
-  var tba=e.find(x=>(x.cycles||[]).some(k=>k.status==="tba"));
-  return tba||e[0];
+  var tba=e.find(x=>(x.cycles||[]).some(k=>k.status==="tba"&&cycleIsMain(k,x.cycles)));
+  return tba||e[e.length-1]||e[0];
 }
 function pickPrimary(ed){
   var cs=ed.cycles||[];
-  var o=cs.filter(c=>c.status==="open"&&c.submission);
+  var main=cs.filter(function(c){return cycleIsMain(c,cs)});
+  var pool=main.length?main:cs;
+  var o=pool.filter(c=>c.status==="open"&&c.submission);
   if(o.length){o.sort((a,b)=>deadlineInstant(a)-deadlineInstant(b));return{c:o[0],k:"open"}}
-  var cl=cs.filter(c=>c.status==="closed"&&c.submission);
+  var cl=pool.filter(c=>c.status==="closed"&&c.submission);
   if(cl.length){cl.sort((a,b)=>deadlineInstant(b)-deadlineInstant(a));return{c:cl[0],k:"closed"}}
-  return{c:cs.find(c=>c.status==="tba")||cs[0],k:"tba"}
+  return{c:pool.find(c=>c.status==="tba")||pool[0]||cs[0],k:"tba"}
 }
 function nextPredicted(conf){
   var now=Date.now();
