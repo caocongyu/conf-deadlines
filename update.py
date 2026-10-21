@@ -4,6 +4,7 @@
 会议截稿数据更新脚本。
 用法:  python3 update.py
 会联网抓取软工四大顶会的最新重要日期，更新同目录下 index.html 里内联的数据块。
+安全四大与人工智能 CCF-A 不在自动抓取范围内。
 历史投稿/录用统计不自动抓取（需人工维护），脚本保留原值。
 
 依赖: 仅 Python 标准库（urllib + re + json）。
@@ -131,7 +132,8 @@ def main():
     data["last_updated"] = date.today().isoformat()
     save_data(data, html)
     print("\n完成。index.html 已更新，last_updated =", data["last_updated"])
-    print("提示: 安全四大 (S&P/CCS/USENIX/NDSS) 官网结构各异，本脚本暂未自动解析，")
+    print("提示: 安全四大 (S&P/CCS/USENIX/NDSS) 与人工智能 CCF-A")
+    print("      (AAAI/NeurIPS/ACL/CVPR/ICCV/ICML/ICLR) 官网结构各异，本脚本暂未自动解析。")
     print("      如需更新请手动改 index.html 里的内联数据块，或扩展本脚本解析逻辑。")
 
 

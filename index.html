@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>目标会议截稿追踪 · 软工 & 安全八大顶会</title>
+<title>目标会议截稿追踪 · 软工、安全与 AI 顶会</title>
 <style>
-  :root{--bg:#0b0f1a;--card:#151b2c;--card2:#1b2238;--border:#2a3450;--text:#e6ebf5;--muted:#8b95ad;--se:#4ea1ff;--sec:#ff5c7a;--green:#2ecc71;--yellow:#f1c40f;--orange:#ff8c42;--red:#ff4757;--gray:#6b7280}
+  :root{--bg:#0b0f1a;--card:#151b2c;--card2:#1b2238;--border:#2a3450;--text:#e6ebf5;--muted:#8b95ad;--se:#4ea1ff;--sec:#ff5c7a;--ai:#c084fc;--green:#2ecc71;--yellow:#f1c40f;--orange:#ff8c42;--red:#ff4757;--gray:#6b7280}
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(1200px 800px at 20% -10%,#1a2a4a 0%,transparent 60%),radial-gradient(1000px 700px at 100% 0%,#2a1a3a 0%,transparent 55%),var(--bg);color:var(--text);min-height:100vh;padding:28px 20px 60px;line-height:1.5}
   .wrap{max-width:1280px;margin:0 auto}
   header{text-align:center;margin-bottom:28px}
-  header h1{font-size:30px;font-weight:800;letter-spacing:.5px;background:linear-gradient(90deg,var(--se),var(--sec));-webkit-background-clip:text;background-clip:text;color:transparent}
+  header h1{font-size:30px;font-weight:800;letter-spacing:.5px;background:linear-gradient(90deg,var(--se),var(--ai),var(--sec));-webkit-background-clip:text;background-clip:text;color:transparent}
   header .sub{color:var(--muted);margin-top:6px;font-size:14px}
   header .meta{color:var(--muted);margin-top:8px;font-size:12px}
   header .meta b{color:var(--text)}
@@ -28,6 +28,7 @@
   .group>h2 .bar{width:6px;height:22px;border-radius:3px}
   .group.se .bar{background:var(--se)}
   .group.sec .bar{background:var(--sec)}
+  .group.ai .bar{background:var(--ai)}
   .group>h2 .tag{font-size:12px;color:var(--muted);font-weight:500}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(390px,1fr));gap:16px}
   .card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:14px;padding:18px 18px 16px;position:relative;overflow:hidden;transition:transform .15s,border-color .15s}
@@ -35,6 +36,7 @@
   .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px}
   .card.se::before{background:var(--se)}
   .card.sec::before{background:var(--sec)}
+  .card.ai::before{background:var(--ai)}
   .card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
   .name{font-size:22px;font-weight:800;letter-spacing:.5px}
   .full{font-size:11.5px;color:var(--muted);margin-top:2px}
@@ -60,6 +62,7 @@
   .info a{color:var(--se);text-decoration:none;word-break:break-all}
   .info a:hover{text-decoration:underline}
   .card.sec .info a{color:var(--sec)}
+  .card.ai .info a{color:var(--ai)}
   .cycles{margin-top:12px;display:flex;flex-direction:column;gap:6px}
   .cycle{font-size:11.5px;padding:6px 10px;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
   .cycle .t{color:var(--text);font-weight:600}
@@ -95,7 +98,7 @@
 <div class="wrap">
   <header>
     <h1>目标会议截稿追踪</h1>
-    <div class="sub">软件工程四大 + 安全四大 · 实时倒计时</div>
+    <div class="sub">软件工程四大 + 安全四大 + 人工智能 CCF-A · 实时倒计时</div>
     <div class="meta">数据更新于 <b id="lastUpdated">—</b> · 当前时间 <b id="now">—</b></div>
     <div class="legend">
       <span><i class="dot" style="background:var(--red)"></i>≤7天 紧急</span>
@@ -117,7 +120,7 @@
 </div>
 <script id="data">
 window.CONF_DATA = {
-  "last_updated": "2026-09-18",
+  "last_updated": "2026-10-20",
   "groups": [
     {
       "id": "se",
@@ -742,6 +745,318 @@ window.CONF_DATA = {
           ]
         }
       ]
+    },
+    {
+      "id": "ai",
+      "title": "人工智能顶会",
+      "subtitle": "CCF-A · 第七版",
+      "conferences": [
+        {
+          "key": "aaai",
+          "name": "AAAI",
+          "full": "AAAI Conference on Artificial Intelligence",
+          "rank": "CCF-A",
+          "frequency": "每年1次截稿",
+          "editions": [
+            {
+              "edition": "AAAI-27",
+              "conf_dates_text": "Feb 16 – 23, 2027",
+              "conf_start": "2027-02-16",
+              "conf_end": "2027-02-23",
+              "location": "Montréal, Canada",
+              "website": "https://aaai.org/conference/aaai/aaai-27/",
+              "cycles": [
+                {
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "track": "Main Technical",
+                  "primary": true,
+                  "abstract": "2026-07-21",
+                  "submission": "2026-07-28",
+                  "notification": "2026-11-30",
+                  "status": "closed"
+                }
+              ]
+            }
+          ],
+          "pastDeadlines": [
+            {
+              "edition": "AAAI-27",
+              "track": "Main Technical",
+              "submission": "2026-07-28"
+            }
+          ],
+          "predicted": [
+            {
+              "edition": "AAAI-28",
+              "track": "Main Technical",
+              "submission": "2027-07-28",
+              "note": "AAAI-28 CFP 未公布，按 AAAI-27 全文截稿 7/28（摘要 7/21）预测"
+            }
+          ]
+        },
+        {
+          "key": "neurips",
+          "name": "NeurIPS",
+          "full": "Conference on Neural Information Processing Systems",
+          "rank": "CCF-A",
+          "frequency": "每年1次截稿",
+          "editions": [
+            {
+              "edition": "NeurIPS 2026",
+              "conf_dates_text": "Dec 6 – 12, 2026（Sydney；卫星会场 Atlanta / Paris 为 Dec 9 – 13）",
+              "conf_start": "2026-12-06",
+              "conf_end": "2026-12-12",
+              "location": "Sydney, Australia",
+              "website": "https://neurips.cc/Conferences/2026",
+              "cycles": [
+                {
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "track": "Main",
+                  "primary": true,
+                  "abstract": "2026-05-04",
+                  "submission": "2026-05-06",
+                  "notification": "2026-09-24",
+                  "status": "closed"
+                }
+              ]
+            }
+          ],
+          "pastDeadlines": [
+            {
+              "edition": "NeurIPS 2025",
+              "track": "Main",
+              "submission": "2025-05-15"
+            },
+            {
+              "edition": "NeurIPS 2026",
+              "track": "Main",
+              "submission": "2026-05-06"
+            }
+          ],
+          "predicted": [
+            {
+              "edition": "NeurIPS 2027",
+              "track": "Main",
+              "submission": "2027-05-06",
+              "note": "NeurIPS 2027 仅公布举办地为欧洲，CFP 未出；按 2026 全文截稿 5/6 预测（2025 为 5/15，日期有提前）"
+            }
+          ]
+        },
+        {
+          "key": "acl",
+          "name": "ACL",
+          "full": "Annual Meeting of the Association for Computational Linguistics",
+          "rank": "CCF-A",
+          "frequency": "每年1次截稿（经 ARR）",
+          "editions": [
+            {
+              "edition": "ACL 2027",
+              "conf_dates_text": "Aug 17 – 22, 2027（主会 Aug 20 – 22）",
+              "conf_start": "2027-08-17",
+              "conf_end": "2027-08-22",
+              "location": "Kyoto, Japan",
+              "website": "https://2027.aclweb.org/",
+              "cycles": [
+                {
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "track": "Main (ARR)",
+                  "primary": true,
+                  "submission": "2027-01-04",
+                  "status": "open"
+                }
+              ]
+            }
+          ],
+          "pastDeadlines": [
+            {
+              "edition": "ACL 2027",
+              "track": "ARR submission",
+              "submission": "2027-01-04"
+            }
+          ]
+        },
+        {
+          "key": "cvpr",
+          "name": "CVPR",
+          "full": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+          "rank": "CCF-A",
+          "frequency": "每年1次截稿",
+          "editions": [
+            {
+              "edition": "CVPR 2027",
+              "conf_dates_text": "Jun 20 – 25, 2027（主会 Jun 22 – 25）",
+              "conf_start": "2027-06-20",
+              "conf_end": "2027-06-25",
+              "location": "Seattle, WA, USA",
+              "website": "https://cvpr.thecvf.com/Conferences/2027",
+              "cycles": [
+                {
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "track": "Main",
+                  "primary": true,
+                  "abstract": "2026-11-10",
+                  "abstract_label": "注册",
+                  "submission": "2026-11-16",
+                  "notification": "2027-02-25",
+                  "status": "open"
+                }
+              ]
+            }
+          ],
+          "pastDeadlines": [
+            {
+              "edition": "CVPR 2026",
+              "track": "Main",
+              "submission": "2025-11-13"
+            },
+            {
+              "edition": "CVPR 2027",
+              "track": "Main",
+              "submission": "2026-11-16"
+            }
+          ]
+        },
+        {
+          "key": "iccv",
+          "name": "ICCV",
+          "full": "IEEE/CVF International Conference on Computer Vision",
+          "rank": "CCF-A",
+          "frequency": "每两年1次截稿",
+          "editions": [
+            {
+              "edition": "ICCV 2027",
+              "conf_dates_text": "Oct 3 – 7, 2027（主会 Oct 5 – 7）",
+              "conf_start": "2027-10-03",
+              "conf_end": "2027-10-07",
+              "location": "Hong Kong",
+              "website": "https://iccv.thecvf.com/Conferences/2027",
+              "cycles": [
+                {
+                  "track": "Main",
+                  "primary": true,
+                  "submission": null,
+                  "tz": "",
+                  "status": "tba"
+                }
+              ]
+            }
+          ],
+          "pastDeadlines": [
+            {
+              "edition": "ICCV 2025",
+              "track": "Main",
+              "submission": "2025-03-07"
+            }
+          ],
+          "predicted": [
+            {
+              "edition": "ICCV 2027",
+              "track": "Main",
+              "submission": "2027-03-07",
+              "note": "ICCV 2027 CFP 未公布；按 ICCV 2025 全文截稿 3/7（注册 3/3，均为 HST）预测"
+            }
+          ]
+        },
+        {
+          "key": "icml",
+          "name": "ICML",
+          "full": "International Conference on Machine Learning",
+          "rank": "CCF-A",
+          "frequency": "每年1次截稿",
+          "editions": [
+            {
+              "edition": "ICML 2027",
+              "conf_dates_text": "TBA",
+              "conf_start": null,
+              "conf_end": null,
+              "location": "South America (city TBA)",
+              "website": "https://icml.cc/Conferences/FutureMeetings",
+              "cycles": [
+                {
+                  "track": "Main",
+                  "primary": true,
+                  "submission": null,
+                  "tz": "",
+                  "status": "tba"
+                }
+              ]
+            }
+          ],
+          "pastDeadlines": [
+            {
+              "edition": "ICML 2025",
+              "track": "Main",
+              "submission": "2025-01-30"
+            },
+            {
+              "edition": "ICML 2026",
+              "track": "Main",
+              "submission": "2026-01-28"
+            }
+          ],
+          "predicted": [
+            {
+              "edition": "ICML 2027",
+              "track": "Main",
+              "submission": "2027-01-28",
+              "note": "ICML 2027 CFP 未公布（举办地为南美）；按 ICML 2026 全文截稿 1/28（摘要 1/23）预测，2025 为 1/30"
+            }
+          ]
+        },
+        {
+          "key": "iclr",
+          "name": "ICLR",
+          "full": "International Conference on Learning Representations",
+          "rank": "CCF-A",
+          "frequency": "每年1次截稿",
+          "editions": [
+            {
+              "edition": "ICLR 2027",
+              "conf_dates_text": "Apr 26 – 28, 2027（workshops Apr 29 – 30）",
+              "conf_start": "2027-04-26",
+              "conf_end": "2027-04-28",
+              "location": "TBA",
+              "website": "https://iclr.cc/Conferences/2027",
+              "cycles": [
+                {
+                  "time": "23:59",
+                  "tz": "AoE",
+                  "track": "Main",
+                  "primary": true,
+                  "abstract": "2026-09-18",
+                  "submission": "2026-09-25",
+                  "notification": "2026-12-16",
+                  "status": "closed"
+                }
+              ]
+            }
+          ],
+          "pastDeadlines": [
+            {
+              "edition": "ICLR 2026",
+              "track": "Main",
+              "submission": "2025-09-24"
+            },
+            {
+              "edition": "ICLR 2027",
+              "track": "Main",
+              "submission": "2026-09-25"
+            }
+          ],
+          "predicted": [
+            {
+              "edition": "ICLR 2028",
+              "track": "Main",
+              "submission": "2027-09-25",
+              "note": "ICLR 2028 CFP 未公布，按 ICLR 2027 全文截稿 9/25（摘要 9/18）预测"
+            }
+          ]
+        }
+      ]
     }
   ]
 };
@@ -815,7 +1130,7 @@ function buildCard(conf,gc){
   (ed.cycles||[]).filter(function(cy){return cycleIsMain(cy,ed.cycles)}).forEach(cy=>{
     var badge=cy.status==="open"?"open":cy.status==="closed"?"closed":"tba";
     var dtxt=cy.submission?("截稿 "+fmtLocal(deadlineInstant(cy))):"截稿 TBA";
-    if(cy.abstract) dtxt="摘要 "+fmtLocal(deadlineInstant({...cy,submission:cy.abstract}))+" · "+dtxt;
+    if(cy.abstract) dtxt=(cy.abstract_label||"摘要")+" "+fmtLocal(deadlineInstant({...cy,submission:cy.abstract}))+" · "+dtxt;
     if(cy.notification) dtxt+=" · 通知 "+fmtDate(cy.notification);
     h+='<div class="cycle"><span class="t">'+esc(cy.track)+'</span><span class="d">'+dtxt+'</span><span class="badge '+badge+'">'+(cy.status==="open"?"可投":cy.status==="closed"?"已截止":"待公布")+'</span></div>';
   });
@@ -856,8 +1171,7 @@ function cardSortKey(info){
   return 1e9;
 }
 function applySort(){
-  ["se","sec"].forEach(gid=>{
-    var grid=document.getElementById("grid_"+gid);
+  document.querySelectorAll(".grid").forEach(grid=>{
     if(!grid)return;
     var cards=[].slice.call(grid.querySelectorAll(".card"));
     cards.sort(function(a,b){
@@ -883,7 +1197,7 @@ function renderOnce(){
     var gh='<div class="group '+g.id+'"><h2><span class="bar"></span>'+esc(g.title)+' <span class="tag">'+esc(g.subtitle)+'</span></h2><div class="grid" id="grid_'+g.id+'"></div></div>';
     root.insertAdjacentHTML("beforeend",gh);
     var grid=document.getElementById("grid_"+g.id);
-    var built=g.conferences.map(c=>buildCard(c,g.id==="se"?"se":"sec"));
+    var built=g.conferences.map(c=>buildCard(c,g.id));
     built.forEach(b=>{var m=b.html.match(/data-key="([^"]+)"/);var key=m[1];CARDS[key]={target:b.target,label:b.label,mode:b.mode,kind:b.kind,accepted:b.accepted};grid.insertAdjacentHTML("beforeend",b.html)});
   });
   applySort();
